@@ -1,0 +1,4 @@
+Id,Name,AttackList,DefenseList,HpList,AttackInterval,AttackRange,Mp,DefenseCount,PrepareTime,ControlCount,PassiveSkill,ActiveSkill,UpgradeCond
+int,string,List<int>,List<int>,List<int>,int,int,int,int,int,int,int,int,List<int>
+1,0,0,0,0,0,0,0,0,0,0,0,0,0
+唯一索引,怪物名称,攻击力等级列表,防御力等级列表,生命值等级列表,攻击间隔,攻击范围,法力值,阻挡数,准备时间,调度次数,被动技能,主动技能,升级条件

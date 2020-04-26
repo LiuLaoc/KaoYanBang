@@ -58,3 +58,19 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/KaoYanBang/Logs
+/KaoYanBang/obj
+/KaoYanBang/Packages
+/KaoYanBang/Assembly-CSharp.csproj
+/KaoYanBang/Assembly-CSharp-Editor.csproj
+/KaoYanBang/KaoYanBang.sln
+/KaoYanBang/.vs
+/KaoYanBang/Library
+Logs
+obj
+Packages
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+KaoYanBang.sln
+.vs
+Library

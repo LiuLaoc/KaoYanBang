@@ -1,8 +1,8 @@
 # 类、结构命名：大驼峰命名
-1、XXXFrame：用于包含Panel
-2、XXXPanel：用于包含UI元素，其实是Controller
-3、XXXModel：用于记录该Panel中所需要的数据
-4、XXXView：用于记录该Panel中的View
+1. XXXFrame：用于包含Panel
+2. XXXPanel：用于包含UI元素，其实是Controller
+3. XXXModel：用于记录该Panel中所需要的数据
+4. XXXView：用于记录该Panel中的View
 # 接口命名：I+大驼峰命名
 # 枚举命名：
 XXXType
@@ -32,13 +32,13 @@ OnStateChange
 - UIRoot
     - XXXFrame（挂载Frame，用于记录Panel结构，以及窗口切换）
         - XXXPanel(挂载View、Panel、Model)
-		-Element
-		-Element
-		-Element
+		- Element
+		- Element
+		- Element
 	- XXXPanel(挂载View、Panel、Model)	
-		-Element
-		-Element
-		-Element
+		- Element
+		- Element
+		- Element
 - GameSys(用于挂在各类单例)
   - GameManager（用于管理当前用户状态）
   - MessageManager（消息管理器）

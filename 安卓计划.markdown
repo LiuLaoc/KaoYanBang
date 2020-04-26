@@ -1,0 +1,16 @@
+#冲刺（安卓只有前台）
+## 初期准备
+- 工程建立、工程结构、github配置、UI、网络基本框架制定，接入json库
+- 编写冲刺计划文档
+## 完成View层开发，Model层预留接口（包括页面结构、页面元素的制定、页面跳转逻辑）
+- 登录、个人界面View、Model
+- 专注View、Model（计划、番茄钟、总结报）
+- 资讯View、Model
+- 社区View、Model
+## 完成MC层开发（数据制定、接入后端接口、编写网络回调事件）
+- 登录、个人、专注Model、Controller
+- 测试
+- 资讯Model、Controller
+- 社区Model、Controller
+- 测试
+

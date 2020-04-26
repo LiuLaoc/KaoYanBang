@@ -1,0 +1,48 @@
+# 类、结构命名：大驼峰命名
+1、XXXFrame：用于包含Panel
+2、XXXPanel：用于包含UI元素，其实是Controller
+3、XXXModel：用于记录该Panel中所需要的数据
+4、XXXView：用于记录该Panel中的View
+# 接口命名：I+大驼峰命名
+# 枚举命名：
+XXXType
+# 常量
+全体单词大写，且单词与单词间用_隔开：ALL_COUNT
+# 字段命名
+- 私有：小驼峰命名：arrayList
+- 常见元素缩写：
+	- 按钮Btn
+	- 文本Txt
+	- 图像Img
+	- Toogle：Tge
+	- ……
+# 方法命名：
+- 私有：小驼峰命名，动词+名词 setValue
+- 公有：大驼峰命名，动词+名词 SetValue
+- 静态：s_+大驼峰命名，动词+名词 sSetValue
+- 参数:_+小驼峰
+# 消息命名
+- 委托、事件名：大驼峰命名：动词+名词   
+Action<XXXArg> ChangeState; 
+- 回调函数：On+大驼峰：名词+动词   
+- 事件参数类：EventArgs，命名：XXXArgs   
+例：ChangeStateArgs
+OnStateChange
+#UI项目结构：
+- UIRoot
+    - XXXFrame（挂载Frame，用于记录Panel结构，以及窗口切换）
+        - XXXPanel(挂载View、Panel、Model)
+		-Element
+		-Element
+		-Element
+	- XXXPanel(挂载View、Panel、Model)	
+		-Element
+		-Element
+		-Element
+- GameSys(用于挂在各类单例)
+  - GameManager（用于管理当前用户状态）
+  - MessageManager（消息管理器）
+  - UIManager（UI管理器）
+  - TableManager（配置表管理器）
+  - NetDataManager（网络数据中心管理器）
+  - HttpCenter（HTTP收发管理器）

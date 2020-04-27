@@ -1,0 +1,8 @@
+# 将资源放在相应的文件夹里
+# 资源命名格式：
+	- 登录界面：login_hat、login_Hide、login_qq、login_weixin……
+	- 个人界面：person_XXX
+	- 社区界面: community_XXX
+	- 专注界面：focus_XXX
+	- 资讯界面：infomation_XXX
+	- 通用图标：icon_XXX

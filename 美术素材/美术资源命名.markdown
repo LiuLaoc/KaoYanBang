@@ -4,5 +4,5 @@
 	- 个人界面：person_XXX
 	- 社区界面: community_XXX
 	- 专注界面：focus_XXX
-	- 资讯界面：infomation_XXX
+	- 资讯界面：info_XXX
 	- 通用图标：icon_XXX

@@ -6,13 +6,13 @@ namespace liulaoc.UI.Base
 
     public class UIMgr : TMonoSingleton<UIMgr>, IInitializable
     {
+        [SerializeField] private string initFrameName;
         private Transform UIRoot;
         private Stack<UIFrame> UIStack = new Stack<UIFrame>();
         public void Init()
         {
             UIRoot = transform.Find("UIRoot");
-            CreateFrame("RootFrame");
-            Debug.Log("UIMgrInit");
+            CreateFrame("StartFrame");
         }
         public void CreateFrame(string uiName)
         {

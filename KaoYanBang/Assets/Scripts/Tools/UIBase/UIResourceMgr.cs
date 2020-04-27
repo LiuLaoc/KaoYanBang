@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace liulaoc.UI.Base
 {
-
-
     public class UIResourceMgr : TSingleton<UIResourceMgr>
     {
         public Dictionary<string, GameObject> UiDic { private set; get; } = new Dictionary<string, GameObject>();

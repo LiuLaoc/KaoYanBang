@@ -1,18 +1,35 @@
-﻿using System.Collections;
+﻿using liulaoc.UI.Base;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class LoginBgPanel : MonoBehaviour
+public class LoginBgPanel : UIPanel
 {
-    // Start is called before the first frame update
-    void Start()
+    #region view
+    private Button userProtoBtn;
+    private Button privacyProtoBtn;
+
+    #endregion
+    protected override void AddListener()
     {
-        
+        userProtoBtn.onClick.AddListener(() => 
+        {
+            UIMgr.Instance.CreateFrame("UseProtoFrame");
+        });
+        privacyProtoBtn.onClick.AddListener(() =>
+        {
+            UIMgr.Instance.CreateFrame("PrivacyProtoFrame");
+        });
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void BindView()
     {
-        
+        userProtoBtn = transform.Find("UserProtoBtn").GetComponent<Button>();
+        privacyProtoBtn = transform.Find("PrivacyProtoBtn").GetComponent<Button>();
+    }
+    protected override void Awake()
+    {
+        base.Awake();
     }
 }

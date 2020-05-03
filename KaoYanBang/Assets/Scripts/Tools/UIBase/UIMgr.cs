@@ -12,7 +12,7 @@ namespace liulaoc.UI.Base
         public void Init()
         {
             UIRoot = transform.Find("UIRoot");
-            CreateFrame("StartFrame");
+            CreateFrame(initFrameName);
         }
         public void CreateFrame(string uiName)
         {

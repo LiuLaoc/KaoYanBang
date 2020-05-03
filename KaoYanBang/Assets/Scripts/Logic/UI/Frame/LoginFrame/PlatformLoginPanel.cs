@@ -20,7 +20,7 @@ public class PlatformLoginPanel : UIPanel
     }
     protected override void AddListener()
     {
-        throw new System.NotImplementedException();
+        
     }
     protected override void BindView()
     {

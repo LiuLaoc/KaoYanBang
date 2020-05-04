@@ -18,5 +18,6 @@ namespace liulaoc.UI.Base
                 AddPanel(uIPanel);
             }
         }
+        
     }
 }

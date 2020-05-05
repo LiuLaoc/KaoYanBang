@@ -9,6 +9,6 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
 {
     public void Init()
     {
-        throw new System.NotImplementedException();
+        
     }
 }

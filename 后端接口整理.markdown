@@ -1,19 +1,89 @@
 # 登录注册：
 ## 注册
+- 接口参数：
+  - 账号(string)
+  - 密码(string)
+- 返回数据:无
 ## 登录
+- 接口参数：
+  - 账号(string)
+  - 密码(string)
+- 返回数据：无
+
 # 个人界面：
+## 获取个人资料:
+- 接口参数：
+  - userName(string)
+- 返回数据
+  - User
 ## 获取我发布过的帖子
+- 接口参数：
+  - userName(string)
+  - index(int)
+- 需要的数据
+  - List<Invitation>
 ## 获取我发布过的评论
+- 接口参数：
+  - userName(string)
+  - index(int)
+- 返回数据
+  - List<Comment>
 ## 获取我的收藏帖子
+- 接口参数
+  - userName(string)
+  - index(int)
+- 返回数据
+  - List<Like>
 # 社区界面：
 ## 获取热门帖
+  - 接口参数：无
+  - 返回数据：
+    - List<Invitation> 三个
 ## 获取精华帖
+  - 接口参数：无
+  - 返回数据：
+    - List<Invitation> 三个
 ## 获取热门板块
-## 获取所有帖子
-## 获取所有板块
+  - 接口参数：无
+  - 返回数据：
+    - List<Module> 三个
+## 获取帖子
+- 接口参数:
+  - index(int)
+- 返回数据:
+  - List<Invitation>
+## 获取板块
+- 接口参数:
+  - index(int)
+- 返回数据:
+  - List<Module>
 ## 发布帖子
+- 接口参数:
+  - Module(string)板块类型
+  - Title(string)标题
+  - Content(string)内容
 ## 查看某个帖子（获取帖子内容，所有评论）
+- 接口参数:
+  - id(帖子ID)
+- 返回数据：
+  - 帖子内容、所有评论(Invitation、List<Comment>)
 # 专注界面
+## 添加标签
+- 参数接口:
+  - tag(string)
+  - username(string)
 ## 发布计划
+- 参数接口:
+  - tag(string)
+  - content(string)
+  - username(string)
+  - DateTime(DateTime)
+## 改变任务状态(完成、未完成)
+- 参数接口:
+  - isFinish(bool)
 ## 获取所有计划
+- 参数接口:
+  - username(string)
+- 返回数据:
+  - List<Plan>
 # 资讯界面

@@ -8,7 +8,7 @@ namespace liulaoc.Net.Http
 {
     public class HttpCenter : TMonoSingleton<HttpCenter>, IInitializable
     {
-        [SerializeField] public static string path = "liulaoc.cn/api/";
+        [SerializeField] public static string path = "118.178.184.69:4396/";
         public string token = "";
         public Queue<HttpRequest> RequestQueue;
         public Dictionary<string, bool> isAsyncing = new Dictionary<string, bool>();//防止重复提交数据

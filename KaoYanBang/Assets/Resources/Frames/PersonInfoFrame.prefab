@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6642902712836518831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003641342958303508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5900b9a3d7f324b4ebaa9aef1be1d151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7915752946346727797
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +23,7 @@ GameObject:
   - component: {fileID: 7915752946346727796}
   - component: {fileID: 3820158958865984440}
   m_Layer: 5
-  m_Name: SetFrame
+  m_Name: PersonInfoFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,6 +332,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 438a92f8f75d3ff46bd69ffa4e13cc9d, type: 3}
+--- !u!1 &4003641342958303508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1164971142615494066, guid: 438a92f8f75d3ff46bd69ffa4e13cc9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2856695595315598502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4003641342958303509 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1164971142615494067, guid: 438a92f8f75d3ff46bd69ffa4e13cc9d,
@@ -336,7 +354,7 @@ PrefabInstance:
     - target: {fileID: 4594490851323124286, guid: b536668f86f049d47aa5d451135e0afc,
         type: 3}
       propertyPath: m_Name
-      value: ContentListPanel
+      value: PersonInfoPanel
       objectReference: {fileID: 0}
     - target: {fileID: 4594490851323124287, guid: b536668f86f049d47aa5d451135e0afc,
         type: 3}

@@ -1,4 +1,5 @@
-﻿using liulaoc.UI.Base;
+﻿using liulaoc.Net.Http;
+using liulaoc.UI.Base;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,20 @@ public class NormalLoginPanel : UIPanel
     }
     protected override void AddListener()
     {
-        
+        registerBtn.onClick.AddListener(() => 
+        {
+            UIMgr.Instance.CreateFrame("RegisterFrame");
+        });//注册按钮监听
+        confirmLoginBtn.onClick.AddListener(() =>
+        {
+            RegisterMsg msg = new RegisterMsg(accountField.text,pwdField.text);
+            MsgManager.Instance.NetMsgCenter.NetRegister(msg, (responds) =>
+             {
+                 if(responds.Result == RespondsResult.Succ)
+                 {
+                     UIMgr.Instance.CreateFrame("PersonalFrame");
+                 }
+             });
+        });//登录按钮监听
     }
 }

@@ -10,14 +10,10 @@ public class PersonPanel : UIPanel
     private Image headImg;
     private Text nameTxt;
     private Text descriptionTxt;
-
-    private Button setBtn;
-
-    private Button postBtn;
-    private Button commentBtn;
-    private Text postTxt;
-    private Text commentTxt;
     #endregion
+    #region Model
+    private string Name => NetDataManager.Instance.user.username;
+    #endregion  
     protected override void Awake()
     {
         base.Awake();
@@ -34,13 +30,9 @@ public class PersonPanel : UIPanel
         headImg = personInfo.Find("Head").GetComponent<Image>();
         nameTxt = personInfo.Find("Name").GetComponent<Text>();
         descriptionTxt = personInfo.Find("Description").GetComponent<Text>();
-        //groupBind
-        var group = transform.Find("Group");
-        postBtn = group.Find("PostBtn").GetComponent<Button>();
-        commentBtn = group.Find("CommentBtn").GetComponent<Button>();
-        postTxt = postBtn.transform.Find("Text").GetComponent<Text>();
-        commentTxt = commentBtn.transform.Find("Text").GetComponent<Text>();
-        //bgBind
-        setBtn = transform.Find("SetBtn").GetComponent<Button>();
+    }
+    protected void UpdateView()
+    {
+        nameTxt.text = Name;
     }
 }

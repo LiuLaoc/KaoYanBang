@@ -1,4 +1,5 @@
-﻿using liulaoc.UI.Base;
+﻿using liulaoc.Net.Http;
+using liulaoc.UI.Base;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,14 @@ public class RegisterPanel : UIPanel
     #region
     private void OnRegister()
     {
-
+        RegisterMsg msg = new RegisterMsg(accountField.text,pwdField.text);
+        MsgManager.Instance.NetMsgCenter.NetRegister(msg, responds =>
+         {
+             if(responds.Result == RespondsResult.Succ)
+             {
+                 UIMgr.Instance.RemoveFrame();
+             }
+         });
     }
     #endregion
 }

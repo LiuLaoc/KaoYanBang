@@ -1,17 +1,21 @@
-﻿using System.Collections;
+﻿using liulaoc.UI.Base;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommentContentPanel : MonoBehaviour
+public class CommentContentPanel : UIPanel
 {
-    // Start is called before the first frame update
-    void Start()
+    #region view
+    [SerializeField] private PostFrame postFrame;
+    #endregion
+    #region model
+    #endregion
+    protected override void AddListener()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void BindView()
     {
         
     }

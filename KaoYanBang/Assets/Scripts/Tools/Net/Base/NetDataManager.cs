@@ -96,8 +96,25 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             HttpRequest httpRequest = new HttpRequest()
             {
                 Msg = request,
-                HttpMethod = Method.Get,
+                HttpMethod = Method.Post,
                 Url = HttpCenter.path + "User/login",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetGetMyComment += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "User/getcomment",
                 Handler = (responds) =>
                 {
                     if (responds.Result == RespondsResult.Succ)

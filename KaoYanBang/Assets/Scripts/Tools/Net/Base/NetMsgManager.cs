@@ -13,6 +13,7 @@ namespace liulaoc.Net
         public Action<LoginMsg, Action<HttpResponds>> NetLogin;
         public Action<GetUserMsg, Action<HttpResponds>> NetGetUser;
         public Action<GetMyInvitationMsg, Action<HttpResponds>> NetGetMyInvitation;
+        public Action<GetMyCommentMsg, Action<HttpResponds>> NetGetMyComment;
         #endregion
         #region Community
         public Action<GetHotInvitationMsg, Action<HttpResponds>> NetGetHotInvitation;

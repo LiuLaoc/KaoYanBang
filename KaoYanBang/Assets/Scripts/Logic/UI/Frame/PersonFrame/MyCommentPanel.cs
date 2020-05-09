@@ -1,16 +1,15 @@
 ﻿using liulaoc.UI.Base;
-using POJO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PostContentListPanel : UIPanel
+public class MyCommentPanel : UIPanel
 {
     #region view
     private Transform group;
     #endregion
     #region Model
-    private List<Invitation> myInvitations;
+    private List<POJO.Invitation> myInvitations;
     private int index = 1;
     #endregion
     protected override void AddListener()
@@ -26,15 +25,16 @@ public class PostContentListPanel : UIPanel
     protected void UpdateView()
     {
         //获取我发布的Invitation
-        GetMyInvitationMsg msg = new GetMyInvitationMsg(NetDataManager.Instance.user.user_id,index);
-        MsgManager.Instance.NetMsgCenter.NetGetMyInvitation(msg, (responds) =>
-         {
-             var list = JsonHelper.DeserializeObject<List<Invitation>>(responds.data);
-             foreach(var invitation in list)
-             {
-                 var go = Instantiate(UIResourceMgr.Instance.Get("MyPostPrefab"), group);
-             }
-         });
+        GetMyCommentMsg msg = new GetMyCommentMsg(NetDataManager.Instance.user.user_id, index);
+        MsgManager.Instance.NetMsgCenter.NetGetMyComment(msg, (responds) =>
+        {
+            var list = JsonHelper.DeserializeObject<List<POJO.Comment>>(responds.data);
+            foreach (var comment in list)
+            {
+                var go = Instantiate(UIResourceMgr.Instance.Get("MyCommentPrefab"), group);
+                go.GetComponent<MyCommentPrefab>();
+            }
+        });
         //实例化
     }
     private void OnGetMyInvitation()
@@ -42,3 +42,4 @@ public class PostContentListPanel : UIPanel
 
     }
 }
+

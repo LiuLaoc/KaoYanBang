@@ -4,7 +4,7 @@ using System.Text;
 
 namespace POJO
 {
-    class Comment
+    public class Comment
     {
         public int comment_id { get; set; }
         public string content { get; set; }

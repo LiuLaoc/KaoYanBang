@@ -61,7 +61,7 @@ namespace liulaoc.Net.Http
         /// 网络Url，只传/api之后路径，不传XXXXXXX/api/……
         /// sample:Level/Unlock
         /// </summary>
-        public string Url { get { return url; } set { url = HttpCenter.path + value; } }
+        public string Url { get { return url; } set { url = value; } }
         public HttpResult Result { get; set; }
         public Action<HttpResponds> Handler { get; set; }
         public HttpResponds Responds { get; set; } = new HttpResponds();

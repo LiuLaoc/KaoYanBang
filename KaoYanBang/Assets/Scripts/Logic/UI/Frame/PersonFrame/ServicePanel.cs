@@ -48,6 +48,6 @@ public class ServicePanel : UIPanel
         myPostBtn = group.Find("MyPostBtn").GetComponent<Button>();
         myCommentBtn = group.Find("MyCommentBtn").GetComponent<Button>();
         aboutUsBtn = group.Find("AboutUsBtn").GetComponent<Button>();
-        helpBtn = group.Find("HlpBtn").GetComponent<Button>();
+        helpBtn = group.Find("HelpBtn").GetComponent<Button>();
     }
 }

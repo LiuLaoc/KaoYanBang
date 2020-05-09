@@ -38,13 +38,14 @@ public class PersonInfoPanel : UIPanel
 
     protected override void BindView()
     {
-        headImg = transform.Find("Head").Find("HeadImg").GetComponent<Image>();
-        nameTxt = transform.Find("UserName").Find("NameTxt").GetComponent<Text>();
-        phoneTxt = transform.Find("Phone").Find("PhoneTxt").GetComponent<Text>();
-        pwdTxt = transform.Find("PassWord").Find("PwdTxt").GetComponent<Text>();
-        nameBtn = transform.Find("UserName").GetComponent<Button>();
-        phoneBtn = transform.Find("Phone").GetComponent<Button>();
-        pwdBtn = transform.Find("Password").GetComponent<Button>();
+        var group = transform.Find("Group");
+        headImg = group.Find("Head").Find("HeadImg").GetComponent<Image>();
+        nameTxt = group.Find("UserName").Find("NameTxt").GetComponent<Text>();
+        phoneTxt = group.Find("Phone").Find("PhoneTxt").GetComponent<Text>();
+        pwdTxt = group.Find("Password").Find("PwdTxt").GetComponent<Text>();
+        nameBtn = group.Find("UserName").GetComponent<Button>();
+        phoneBtn = group.Find("Phone").GetComponent<Button>();
+        pwdBtn = group.Find("Password").GetComponent<Button>();
     }
     protected void UpdateView()
     {

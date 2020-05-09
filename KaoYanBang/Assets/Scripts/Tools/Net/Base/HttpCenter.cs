@@ -8,7 +8,7 @@ namespace liulaoc.Net.Http
 {
     public class HttpCenter : TMonoSingleton<HttpCenter>, IInitializable
     {
-        [SerializeField] public static string path = "118.178.184.69:4396/";
+        [SerializeField] public static string path = "http://118.178.184.69:4396/";
         public string token = "";
         public Queue<HttpRequest> RequestQueue;
         public Dictionary<string, bool> isAsyncing = new Dictionary<string, bool>();//防止重复提交数据
@@ -125,20 +125,7 @@ namespace liulaoc.Net.Http
                 www.SetRequestHeader("Content-Type", "application/json");
                 www.SetRequestHeader("Authorization", token);
                 yield return www.SendWebRequest();
-                if (www.responseCode == 500)
-                {
-                    request.Result = HttpResult.ServerError;
-                    request.Responds.Result = RespondsResult.Fail;
-                    request.Responds.data = www.downloadHandler.text;
-                    Debug.Log(request.Responds.data);
-                }
-                else
-                {
-                    request.Responds.data = www.downloadHandler.text;
-                    request.Result = HttpResult.Succ;
-                    request.Responds.Result = RespondsResult.Succ;
-                    Debug.Log(request.Responds.data);
-                }
+                DealResult(www, request);
             }
         }
         private IEnumerator StartPost(HttpRequest request)
@@ -155,20 +142,9 @@ namespace liulaoc.Net.Http
                 www.SetRequestHeader("Content-Type", "application/json");
                 www.SetRequestHeader("Authorization", token);
                 yield return www.SendWebRequest();
-                if (www.responseCode == 500)
-                {
-                    request.Result = HttpResult.ServerError;
-                    request.Responds.Result = RespondsResult.Fail;
-                    request.Responds.data = www.downloadHandler.text;
-                    Debug.Log(request.Responds.data);
-                }
-                else
-                {
-                    request.Responds.data = www.downloadHandler.text;
-                    request.Result = HttpResult.Succ;
-                    request.Responds.Result = RespondsResult.Succ;
-                    Debug.Log(request.Responds.data);
-                }
+                Debug.Log(request.Url);
+                Debug.Log(www.responseCode + " " + request.Responds.data);
+                DealResult(www, request);
             }
         }
         private IEnumerator StartPut(HttpRequest request)
@@ -184,20 +160,7 @@ namespace liulaoc.Net.Http
                 www.SetRequestHeader("Content-Type", "application/json");
                 www.SetRequestHeader("Authorization", token);
                 yield return www.SendWebRequest();
-                if (www.responseCode == 500)
-                {
-                    request.Result = HttpResult.ServerError;
-                    request.Responds.Result = RespondsResult.Fail;
-                    request.Responds.data = www.downloadHandler.text;
-                    Debug.Log(request.Responds.data);
-                }
-                else
-                {
-                    request.Responds.data = www.downloadHandler.text;
-                    request.Result = HttpResult.Succ;
-                    request.Responds.Result = RespondsResult.Succ;
-                    Debug.Log(request.Responds.data);
-                }
+                DealResult(www, request);
             }
         }
         private IEnumerator StartDelete(HttpRequest request)
@@ -221,21 +184,39 @@ namespace liulaoc.Net.Http
                 www.SetRequestHeader("Content-Type", "application/json");
                 www.SetRequestHeader("Authorization", token);
                 yield return www.SendWebRequest();
-                if (www.responseCode == 500)
-                {
-                    request.Result = HttpResult.ServerError;
-                    request.Responds.Result = RespondsResult.Fail;
-                    request.Responds.data = www.downloadHandler.text;
-                    Debug.Log(request.Responds.data);
-                }
-                else
-                {
-                    request.Responds.data = www.downloadHandler.text;
-                    request.Result = HttpResult.Succ;
-                    request.Responds.Result = RespondsResult.Succ;
-                    Debug.Log(request.Responds.data);
-                }
+                DealResult(www, request);
             }
+        }
+
+        private void DealResult(UnityWebRequest www,HttpRequest request)
+        {
+            if (www.responseCode == 500)
+            {
+                request.Result = HttpResult.ServerError;
+                request.Responds.Result = RespondsResult.Fail;
+                request.Responds.data = www.downloadHandler.text;
+            }
+            else if (IsOk(www.responseCode))
+            {
+                request.Responds.data = www.downloadHandler.text;
+                request.Result = HttpResult.Succ;
+                request.Responds.Result = RespondsResult.Succ;
+            }
+            else
+            {
+                request.Result = HttpResult.ServerError;
+                request.Responds.Result = RespondsResult.Fail;
+                request.Responds.data = www.downloadHandler.text;
+            }
+        }
+
+        private bool IsOk(long code)
+        {
+            if (code == 200 || code == 201)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -39,8 +39,8 @@ public class NormalLoginPanel : UIPanel
         });//注册按钮监听
         confirmLoginBtn.onClick.AddListener(() =>
         {
-            RegisterMsg msg = new RegisterMsg(accountField.text,pwdField.text);
-            MsgManager.Instance.NetMsgCenter.NetRegister(msg, (responds) =>
+            LoginMsg msg = new LoginMsg(accountField.text,pwdField.text);
+            MsgManager.Instance.NetMsgCenter.NetLogin(msg, (responds) =>
              {
                  if(responds.Result == RespondsResult.Succ)
                  {

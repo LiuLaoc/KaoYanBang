@@ -74,7 +74,7 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
                 {
                     if (responds.Result == RespondsResult.Succ)
                     {
-                        callback(responds);
+                        callbcak(responds);
                     }
                 }
             };

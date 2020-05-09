@@ -161,6 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8300211841978546720}
+  - component: {fileID: 5043483659054491058}
   m_Layer: 5
   m_Name: HeaderPanel
   m_TagString: Untagged
@@ -190,6 +191,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -76.78259}
   m_SizeDelta: {x: 1080, y: 152.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5043483659054491058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8300211841978546721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5900b9a3d7f324b4ebaa9aef1be1d151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8300211842680147265
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8300211842859083868}
+  - component: {fileID: 3806382189430779568}
   m_Layer: 5
   m_Name: UseProtoFrame
   m_TagString: Untagged
@@ -336,6 +350,18 @@ RectTransform:
   m_AnchoredPosition: {x: 2.5046631e-13, y: -3.5527137e-15}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3806382189430779568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8300211842859083869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3162a24962ad344595d465f0b203c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8300211843277345424
 GameObject:
   m_ObjectHideFlags: 0

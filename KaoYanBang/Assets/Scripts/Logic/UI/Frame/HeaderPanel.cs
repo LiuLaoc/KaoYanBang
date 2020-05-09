@@ -10,7 +10,10 @@ public class HeaderPanel : UIPanel
 
     protected override void AddListener()
     {
-        throw new System.NotImplementedException();
+        backBtn.onClick.AddListener(() =>
+        {
+            UIMgr.Instance.RemoveFrame();
+        });
     }
 
     protected override void BindView()

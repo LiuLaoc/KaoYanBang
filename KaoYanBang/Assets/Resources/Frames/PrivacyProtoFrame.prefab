@@ -271,6 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7538207162012325508}
+  - component: {fileID: 6704702535379525231}
   m_Layer: 5
   m_Name: PrivacyProtoFrame
   m_TagString: Untagged
@@ -300,6 +301,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6704702535379525231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7538207162012325515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3162a24962ad344595d465f0b203c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7538207162956105004
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7840537011851205354}
+  - component: {fileID: 3714152724785164507}
   m_Layer: 5
   m_Name: HeaderPanel
   m_TagString: Untagged
@@ -523,3 +537,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -76.5}
   m_SizeDelta: {x: 1080, y: 152.9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3714152724785164507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840537011851205355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5900b9a3d7f324b4ebaa9aef1be1d151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

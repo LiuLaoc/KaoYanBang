@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class CommunityFrame : UIFrame
 {
+    #region view
+
+    #endregion
     private void Awake()
     {
         

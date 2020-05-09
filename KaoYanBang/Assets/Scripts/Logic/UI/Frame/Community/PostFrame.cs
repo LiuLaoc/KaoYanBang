@@ -17,6 +17,7 @@ public class PostFrame : UIFrame
     #endregion
     #region Model
     public Invitation post { private set; get; }
+    public List<Comment> allComment { private set; get; }
     #endregion
     private void BindView()
     {
@@ -37,8 +38,29 @@ public class PostFrame : UIFrame
     {
         titleTxt.text = post.invitation_title;
         postContent.text = post.content;
-        //moduleTxt.text = post.plate;
         commentNumTxt.text = post.scan_number.ToString();
-
+        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
+         {
+             var list = JsonHelper.DeserializeObject<List<Subject>>(respond.data);
+             foreach(var sbj in list)
+             {
+                 if(sbj.subject_id == post.plate)
+                 {
+                     moduleTxt.text = sbj.subject_name;
+                 }
+             }
+         });
+        //Comment
+        GetCommentMsg commentMsg = new GetCommentMsg(post.plate);
+        MsgManager.Instance.NetMsgCenter.NetGetComment(commentMsg, (respond) =>
+         {
+             allComment = JsonHelper.DeserializeObject<List<Comment>>(respond.data);
+             foreach(var comment in allComment)
+             {
+                 var go = Instantiate(UIResourceMgr.Instance.Get("CommentPrefab"),CommentContentPanel);
+                 go.GetComponent<CommentPrefab>().Init(comment);
+             }
+         });
     }
 }

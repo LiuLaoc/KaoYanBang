@@ -71,6 +71,23 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             };
             HttpCenter.Instance.Send(httpRequest);
         };//登录
+        MsgManager.Instance.NetMsgCenter.NetGetUserById += (request, callback) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "User/findbyid",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callback(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };//登录
         MsgManager.Instance.NetMsgCenter.NetGetUser += (request, callbcak) =>
         {
             HttpRequest httpRequest = new HttpRequest()
@@ -126,7 +143,7 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             HttpCenter.Instance.Send(httpRequest);
         };
         #endregion
-        #region Community 模块
+        #region Community
         MsgManager.Instance.NetMsgCenter.NetGetHotInvitation += (request, callbcak) =>
         {
             HttpRequest httpRequest = new HttpRequest()
@@ -134,6 +151,57 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
                 Msg = request,
                 HttpMethod = Method.Post,
                 Url = HttpCenter.path + "invitation/gethot",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetGetComment += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "comment/getinvitationcomment",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetLike += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "like/addlike",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetAddPost += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "invitation/post",
                 Handler = (responds) =>
                 {
                     if (responds.Result == RespondsResult.Succ)

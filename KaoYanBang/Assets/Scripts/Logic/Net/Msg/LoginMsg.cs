@@ -22,3 +22,12 @@ public class GetUserMsg:BaseMsg
 
     public string username { get; set; }
 }
+public class GetUserByIdMsg :BaseMsg
+{
+    public GetUserByIdMsg(int user_id)
+    {
+        this.user_id = user_id;
+    }
+
+    public int user_id { get; set; }
+}

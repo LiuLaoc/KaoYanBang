@@ -703,7 +703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1679377063116152813}
-  - component: {fileID: 4690055382791281876}
+  - component: {fileID: 2211561625972235357}
   m_Layer: 5
   m_Name: WritePostFrame
   m_TagString: Untagged
@@ -732,7 +732,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1080, y: 1920}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4690055382791281876
+--- !u!114 &2211561625972235357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679377063116152814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3162a24962ad344595d465f0b203c4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 29066f0cd78c9dd4c84615da0fc3e62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1966463627891855898
@@ -1505,7 +1505,7 @@ GameObject:
   - component: {fileID: 62105447236271801}
   - component: {fileID: 591766601955055934}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ConfirmBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

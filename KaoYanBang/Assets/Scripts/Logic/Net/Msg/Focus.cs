@@ -32,3 +32,11 @@ public class GetAllSubjectMsg:BaseMsg
 {
 
 }
+public class GetCommentMsg:BaseMsg
+{
+    public int invitation_id { get; set; }
+public GetCommentMsg(int invitation_id)
+    {
+        this.invitation_id = invitation_id;
+    }
+}

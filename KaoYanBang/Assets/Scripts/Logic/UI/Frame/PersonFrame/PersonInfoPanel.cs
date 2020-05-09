@@ -46,6 +46,7 @@ public class PersonInfoPanel : UIPanel
         nameBtn = group.Find("UserName").GetComponent<Button>();
         phoneBtn = group.Find("Phone").GetComponent<Button>();
         pwdBtn = group.Find("Password").GetComponent<Button>();
+        UpdateView();
     }
     protected void UpdateView()
     {

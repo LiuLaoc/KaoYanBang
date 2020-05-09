@@ -20,4 +20,8 @@ public class PlanGroupPanel : UIPanel
     {
         
     }
+    protected void UpdateView()
+    {
+
+    }
 }

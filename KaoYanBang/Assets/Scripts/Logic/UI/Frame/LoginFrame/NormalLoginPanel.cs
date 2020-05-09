@@ -33,19 +33,20 @@ public class NormalLoginPanel : UIPanel
     }
     protected override void AddListener()
     {
-        registerBtn.onClick.AddListener(() => 
+        registerBtn.onClick.AddListener(() =>
         {
             UIMgr.Instance.CreateFrame("RegisterFrame");
         });//注册按钮监听
         confirmLoginBtn.onClick.AddListener(() =>
         {
-            LoginMsg msg = new LoginMsg(accountField.text,pwdField.text);
+            LoginMsg msg = new LoginMsg(accountField.text, pwdField.text);
             MsgManager.Instance.NetMsgCenter.NetLogin(msg, (responds) =>
              {
-                 if(responds.Result == RespondsResult.Succ)
-                 {
-                     UIMgr.Instance.CreateFrame("PersonalFrame");
-                 }
+                 GetUserMsg userMsg = new GetUserMsg(accountField.text);
+                 MsgManager.Instance.NetMsgCenter.NetGetUser(userMsg, (getUserResponds) =>
+                  {
+                      UIMgr.Instance.CreateFrame("PersonalFrame");
+                  });
              });
         });//登录按钮监听
     }

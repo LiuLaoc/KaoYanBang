@@ -18,6 +18,10 @@ public class Plan : MonoBehaviour
         AddListener();
         UpdateView();
     }
+    public void Init(POJO.Plan plan)
+    {
+
+    }
     protected void BindView()
     {
         finishBtn = transform.Find("FinishBtn").GetComponent<Button>();

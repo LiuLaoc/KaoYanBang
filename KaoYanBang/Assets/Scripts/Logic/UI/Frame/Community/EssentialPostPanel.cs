@@ -5,25 +5,36 @@ using UnityEngine;
 
 public class EssentialPostPanel : UIPanel
 {
+    #region
+    private Transform group;
+    #endregion
+    #region Model
+
+    #endregion
+    private void OnEnable()
+    {
+        UpdateView();
+    }
     protected override void AddListener()
     {
-        throw new System.NotImplementedException();
+
     }
 
     protected override void BindView()
     {
-        throw new System.NotImplementedException();
+        group = transform.Find("PostGroup");
     }
-
-    // Start is called before the first frame update
-    void Start()
+    protected void UpdateView()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GetHotInvitationMsg msg = new GetHotInvitationMsg();
+        MsgManager.Instance.NetMsgCenter.NetGetHotInvitation(msg, (responds) =>
+        {
+            List<POJO.Invitation> invitations = JsonHelper.DeserializeObject<List<POJO.Invitation>>(responds.data);
+            foreach (var invitation in invitations)
+            {
+                var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
+                go.GetComponent<PostPrefab>().Init(invitation);
+            }
+        });
     }
 }

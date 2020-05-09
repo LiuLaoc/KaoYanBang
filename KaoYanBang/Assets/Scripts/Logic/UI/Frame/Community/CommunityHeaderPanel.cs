@@ -7,11 +7,11 @@ public class CommunityHeaderPanel : UIPanel
 {
     protected override void AddListener()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void BindView()
     {
-        throw new System.NotImplementedException();
+
     }
 }

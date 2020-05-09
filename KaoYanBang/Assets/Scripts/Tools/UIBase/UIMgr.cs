@@ -7,7 +7,7 @@ namespace liulaoc.UI.Base
     public class UIMgr : TMonoSingleton<UIMgr>, IInitializable
     {
         [SerializeField] private string initFrameName;
-        private Transform UIRoot;
+        public Transform UIRoot;
         private Stack<UIFrame> UIStack = new Stack<UIFrame>();
         public void Init()
         {

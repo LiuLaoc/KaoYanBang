@@ -13,3 +13,12 @@ public class LoginMsg : BaseMsg
     public string username { get; set; }
     public string password { get; set; }
 }
+public class GetUserMsg:BaseMsg
+{
+    public GetUserMsg(string username)
+    {
+        this.username = username;
+    }
+
+    public string username { get; set; }
+}

@@ -42,6 +42,10 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
                         };
                         callback(responds);
                     }
+                    else
+                    {
+                        MsgManager.Instance.GlobalMsgManager.ShowErrorPanel("注册账号失败");
+                    }
                 }
             };
             HttpCenter.Instance.Send(httpRequest);
@@ -59,10 +63,34 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
                     {
                         callback(responds);
                     }
+                    else
+                    {
+                        MsgManager.Instance.GlobalMsgManager.ShowErrorPanel("登录失败");
+                    }
                 }
             };
             HttpCenter.Instance.Send(httpRequest);
         };//登录
+        MsgManager.Instance.NetMsgCenter.NetGetUser += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "User/findbyname",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        user = JsonHelper.DeserializeObject<User>(responds.data);
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };//通过用户名获取用户信息
+        #endregion
+        #region 个人界面
         MsgManager.Instance.NetMsgCenter.NetGetMyInvitation += (request, callbcak) =>
         {
             HttpRequest httpRequest = new HttpRequest()
@@ -70,6 +98,78 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
                 Msg = request,
                 HttpMethod = Method.Get,
                 Url = HttpCenter.path + "User/login",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        #endregion
+        #region Community 模块
+        MsgManager.Instance.NetMsgCenter.NetGetHotInvitation += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "invitation/gethot",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        #endregion
+        #region 计划模块
+        MsgManager.Instance.NetMsgCenter.NetGetPlan += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "plan/getPlan",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetGetAllSbj += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "subject/getallsubject",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetAddPlan += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "plan/addplan",
                 Handler = (responds) =>
                 {
                     if (responds.Result == RespondsResult.Succ)

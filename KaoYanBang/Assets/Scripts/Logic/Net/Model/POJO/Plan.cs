@@ -4,7 +4,7 @@ using System.Text;
 
 namespace POJO
 {
-    class Plan
+    public class Plan
     {
 
         public int plan_id { get; set; }

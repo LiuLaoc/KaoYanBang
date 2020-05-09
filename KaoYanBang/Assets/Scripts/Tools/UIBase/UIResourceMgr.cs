@@ -10,11 +10,16 @@ namespace liulaoc.UI.Base
         {
             GameObject[] frames = Resources.LoadAll<GameObject>("Frames");
             GameObject[] panels = Resources.LoadAll<GameObject>("Panels");
+            GameObject[] prefab = Resources.LoadAll<GameObject>("Prefab");
             foreach (var go in frames)
             {
                 UiDic.Add(go.name, go);
             }
             foreach (var go in panels)
+            {
+                UiDic.Add(go.name, go);
+            }
+            foreach (var go in prefab)
             {
                 UiDic.Add(go.name, go);
             }

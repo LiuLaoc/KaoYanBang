@@ -38,6 +38,7 @@ public class AddPlanFrame : UIFrame
             AddPlanMsg msg = new AddPlanMsg(DateTime.Now.ToString(), planContent.text, selectIndex, NetDataManager.Instance.user.user_id);
             MsgManager.Instance.NetMsgCenter.NetAddPlan(msg, (responds) =>
              {
+                 MainFrameModel.Instance.AddPlan(JsonHelper.DeserializeObject<POJO.Plan>(responds.data));
                  UIMgr.Instance.RemoveFrame();
              });
         });

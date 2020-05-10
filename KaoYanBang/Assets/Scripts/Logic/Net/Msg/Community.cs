@@ -55,3 +55,12 @@ public class AddPostMsg:BaseMsg
     public int post_user { get;set; }
 
 }
+public class GetPlateInvititionMsg:BaseMsg
+{
+    public int index { get; set; }
+    public int plate { get; set; }
+}
+public class GetInvitationMsg:BaseMsg
+{
+
+}

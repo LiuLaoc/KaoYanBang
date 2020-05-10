@@ -5,11 +5,24 @@ using UnityEngine;
 
 public class GetPlanMsg: BaseMsg
 {
+    public GetPlanMsg(int user_id)
+    {
+        this.user_id = user_id;
+    }
+
     public int user_id { get; set; }
 }
 
 public class ChangePlanStatusMsg:BaseMsg
 {
+    public ChangePlanStatusMsg(int date, int plan_id)
+    {
+        this.date = date;
+        this.plan_id = plan_id;
+    }
+
+    public int date { get; set; }
+    public int plan_id { get; set; }
 
 }
 

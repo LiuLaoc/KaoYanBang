@@ -14,7 +14,7 @@ public class MainFrameModel : TMonoSingleton<MainFrameModel>,IInitializable
     }
     public void AddPlan(POJO.Plan plan)
     {
-        DateTime dt = Convert.ToDateTime(plan.create_time);
+        DateTime dt = Convert.ToDateTime(plan.date);
         var dtStr = dt.ToString("yyyy-MM-dd");
         if (allPlan.ContainsKey(dtStr))
         {

@@ -212,6 +212,40 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             };
             HttpCenter.Instance.Send(httpRequest);
         };
+        MsgManager.Instance.NetMsgCenter.NetGetInvitation += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "invitation/getinvitation",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetGetPlateInvitation += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "invitation/getplateinvition",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
         #endregion
         #region 计划模块
         MsgManager.Instance.NetMsgCenter.NetGetPlan += (request, callbcak) =>
@@ -255,6 +289,23 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
                 Msg = request,
                 HttpMethod = Method.Post,
                 Url = HttpCenter.path + "plan/addplan",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetChangePlanStatus += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "plan/changestatus",
                 Handler = (responds) =>
                 {
                     if (responds.Result == RespondsResult.Succ)

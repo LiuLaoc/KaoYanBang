@@ -13,7 +13,7 @@ public class DatePlan : MonoBehaviour
     #endregion
     #region model
     private string createDate;
-    private bool isInit;
+    private bool isInit = false;
     #endregion
     private void AddListener()
     {

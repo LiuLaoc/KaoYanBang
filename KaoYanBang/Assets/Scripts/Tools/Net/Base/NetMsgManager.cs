@@ -21,12 +21,14 @@ namespace liulaoc.Net
         public Action<GetCommentMsg, Action<HttpResponds>> NetGetComment;
         public Action<LikeMsg, Action<HttpResponds>> NetLike;
         public Action<AddPostMsg, Action<HttpResponds>> NetAddPost;
-
+        public Action<GetInvitationMsg, Action<HttpResponds>> NetGetInvitation;
+        public Action<GetPlateInvitationMsg, Action<HttpResponds>> NetGetPlateInvitation;
         #endregion
         #region Plan
         public Action<GetPlanMsg, Action<HttpResponds>> NetGetPlan;
         public Action<GetAllSubjectMsg, Action<HttpResponds>> NetGetAllSbj;
         public Action<AddPlanMsg, Action<HttpResponds>> NetAddPlan;
+        public Action<ChangePlanStatusMsg, Action<HttpResponds>> NetChangePlanStatus;
         #endregion
     }
 

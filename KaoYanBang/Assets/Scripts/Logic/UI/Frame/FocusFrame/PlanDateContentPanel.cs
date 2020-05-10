@@ -34,7 +34,7 @@ public class PlanDateContentPanel : UIPanel
     }
     protected void UpdateView()
     {
-        GetPlanMsg msg = new GetPlanMsg();
+        GetPlanMsg msg = new GetPlanMsg(NetDataManager.Instance.user.user_id);
         MsgManager.Instance.NetMsgCenter.NetGetPlan(msg, (responds) =>
          {
              var list = JsonHelper.DeserializeObject<List<POJO.Plan>>(responds.data);
@@ -59,9 +59,14 @@ public class PlanDateContentPanel : UIPanel
     }
     private void OnDisable()
     {
-        while(content.childCount != 0)
+        int count = content.childCount;
+        for(int i=0;i<count;i++)
         {
-            Destroy(content.GetChild(0));
+            Destroy(content.GetChild(0).gameObject);
         }
+    }
+    private void OnDestroy()
+    {
+        MainFrameModel.Instance.allPlan.Clear();
     }
 }

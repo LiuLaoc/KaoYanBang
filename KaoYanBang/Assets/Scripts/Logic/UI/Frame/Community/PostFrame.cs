@@ -18,6 +18,7 @@ public class PostFrame : UIFrame
     #region Model
     public Invitation post { private set; get; }
     public List<Comment> allComment { private set; get; }
+    private List<CommentPrefab> allCommentPrefab { set; get; }
     #endregion
     private void BindView()
     {
@@ -59,8 +60,11 @@ public class PostFrame : UIFrame
              foreach(var comment in allComment)
              {
                  var go = Instantiate(UIResourceMgr.Instance.Get("CommentPrefab"),CommentContentPanel);
-                 go.GetComponent<CommentPrefab>().Init(comment);
+                 var prefab = go.GetComponent<CommentPrefab>();
+                 prefab.Init(comment);
+                 allCommentPrefab.Add(prefab);
              }
+             CommentContentPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(1080, 768.9f*allCommentPrefab.Count);
          });
     }
 }

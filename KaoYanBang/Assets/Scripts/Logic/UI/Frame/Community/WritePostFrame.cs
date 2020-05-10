@@ -63,4 +63,23 @@ public class WritePostFrame : UIFrame
              });
         });
     }
+    private void UpdateView()
+    {
+        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
+         {
+             var list = JsonHelper.DeserializeObject<List<POJO.Subject>>(respond.data);
+             List<string> optionList = new List<string>();
+             foreach(var sbj in list)
+             {
+                 optionList.Add(sbj.subject_name);
+             }
+             dropDown.options.Clear();
+             dropDown.AddOptions(optionList);
+         });
+    }
+    private void OnEnable()
+    {
+        UpdateView();
+    }
 }

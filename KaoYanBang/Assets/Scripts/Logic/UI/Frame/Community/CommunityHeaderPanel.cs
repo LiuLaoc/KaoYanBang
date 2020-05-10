@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class CommunityHeaderPanel : UIPanel
 {
+    #region view
+    #endregion
+    #region model
+    #endregion
     protected override void AddListener()
     {
         

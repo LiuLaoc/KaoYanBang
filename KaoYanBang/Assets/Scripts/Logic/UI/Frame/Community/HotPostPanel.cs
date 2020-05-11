@@ -35,6 +35,7 @@ public class HotPostPanel : UIPanel
     }
     protected void UpdateView()
     {
+        ClearView();
         GetHotInvitationMsg msg = new GetHotInvitationMsg();
         MsgManager.Instance.NetMsgCenter.NetGetHotInvitation(msg, (responds) =>
         {
@@ -47,5 +48,17 @@ public class HotPostPanel : UIPanel
                 go.GetComponent<PostPrefab>().Init(invitations[i]);
             }
         });
+    }
+    private void ClearView()
+    {
+        int count = group.childCount;
+        for(int i=0;i<count;i++)
+        {
+            Destroy(group.GetChild(i).gameObject);
+        }
+    }
+    private void OnDisable()
+    {
+        ClearView();
     }
 }

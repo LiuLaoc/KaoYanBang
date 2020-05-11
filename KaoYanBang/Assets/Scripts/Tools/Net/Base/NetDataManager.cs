@@ -246,6 +246,40 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             };
             HttpCenter.Instance.Send(httpRequest);
         };
+        MsgManager.Instance.NetMsgCenter.NetAddScan += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "invitation/addscan",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        MsgManager.Instance.NetMsgCenter.NetAddComment += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "comment/addcomment",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
         #endregion
         #region 计划模块
         MsgManager.Instance.NetMsgCenter.NetGetPlan += (request, callbcak) =>

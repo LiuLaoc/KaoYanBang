@@ -64,3 +64,16 @@ public class GetInvitationMsg:BaseMsg
 {
 
 }
+public class AddCommentMsg:BaseMsg
+{
+    public AddCommentMsg(int comment_invitation, int comment_user, string content)
+    {
+        this.comment_invitation = comment_invitation;
+        this.comment_user = comment_user;
+        this.content = content;
+    }
+
+    public int comment_invitation { get; set; }
+    public int comment_user { get; set; }
+    public string content { get; set; }
+}

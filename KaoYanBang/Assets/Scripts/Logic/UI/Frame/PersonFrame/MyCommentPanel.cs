@@ -32,7 +32,8 @@ public class MyCommentPanel : UIPanel
             foreach (var comment in list)
             {
                 var go = Instantiate(UIResourceMgr.Instance.Get("MyCommentPrefab"), group);
-                go.GetComponent<MyCommentPrefab>();
+                var prefab = go.GetComponent<MyCommentPrefab>();
+                prefab.Init(comment);
             }
         });
         //实例化

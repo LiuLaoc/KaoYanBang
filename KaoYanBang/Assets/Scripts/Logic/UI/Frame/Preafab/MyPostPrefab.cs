@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using liulaoc.UI.Base;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class MyPostPrefab : MonoBehaviour
     {
         isInit = true;
         this.post = post;
+        UpdateView();
     }
     protected void BindView()
     {
@@ -34,6 +36,9 @@ public class MyPostPrefab : MonoBehaviour
         enterBtn.onClick.AddListener(() =>
         {
             //加载PostFrame
+            UIMgr.Instance.CreateFrame("PostFrame");
+            var frame = UIMgr.Instance.GetTopFrame() as PostFrame;
+            frame.Init(post);
         });
     }
     protected void UpdateView()

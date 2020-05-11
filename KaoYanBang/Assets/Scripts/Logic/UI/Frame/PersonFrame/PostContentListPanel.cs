@@ -11,7 +11,7 @@ public class PostContentListPanel : UIPanel
     #endregion
     #region Model
     private List<Invitation> myInvitations;
-    private int index = 1;
+    private int index = 0;
     #endregion
     protected override void AddListener()
     {
@@ -25,6 +25,7 @@ public class PostContentListPanel : UIPanel
     }
     protected void UpdateView()
     {
+        ClearView();
         //获取我发布的Invitation
         GetMyInvitationMsg msg = new GetMyInvitationMsg(NetDataManager.Instance.user.user_id,index);
         MsgManager.Instance.NetMsgCenter.NetGetMyInvitation(msg, (responds) =>
@@ -33,12 +34,21 @@ public class PostContentListPanel : UIPanel
              foreach(var invitation in list)
              {
                  var go = Instantiate(UIResourceMgr.Instance.Get("MyPostPrefab"), group);
+                 var prefab = go.GetComponent<MyPostPrefab>();
+                 prefab.Init(invitation);
              }
          });
-        //实例化
     }
     private void OnGetMyInvitation()
     {
 
+    }
+    private void ClearView()
+    {
+        int count = group.childCount;
+        for(int i=0;i<count;i++)
+        {
+            Destroy(group.GetChild(i).gameObject);
+        }
     }
 }

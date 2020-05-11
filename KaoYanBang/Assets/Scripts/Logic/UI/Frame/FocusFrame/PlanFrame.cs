@@ -60,9 +60,10 @@ public class PlanFrame : UIFrame
     }
     private void OnDisable()
     {
-        if(group.childCount != 0)
+        int count = group.childCount;
+        for(int i=0;i<count;i++)
         {
-            Destroy(group.GetChild(0));
+            Destroy(group.GetChild(0).gameObject);
         }
     }
     private void OnEnable()

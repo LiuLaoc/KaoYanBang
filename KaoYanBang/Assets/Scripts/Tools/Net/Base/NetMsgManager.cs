@@ -23,6 +23,8 @@ namespace liulaoc.Net
         public Action<AddPostMsg, Action<HttpResponds>> NetAddPost;
         public Action<GetInvitationMsg, Action<HttpResponds>> NetGetInvitation;
         public Action<GetPlateInvitationMsg, Action<HttpResponds>> NetGetPlateInvitation;
+        public Action<AddScanMsg, Action<HttpResponds>> NetAddScan;
+        public Action<AddCommentMsg, Action<HttpResponds>> NetAddComment;
         #endregion
         #region Plan
         public Action<GetPlanMsg, Action<HttpResponds>> NetGetPlan;

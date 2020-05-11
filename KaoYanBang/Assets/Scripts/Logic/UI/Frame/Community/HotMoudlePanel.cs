@@ -28,6 +28,7 @@ public class HotMoudlePanel : UIPanel
     }
     protected void UpdateView()
     {
+        ClearView();
         GetAllSubjectMsg msg = new GetAllSubjectMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
         {
@@ -49,6 +50,14 @@ public class HotMoudlePanel : UIPanel
     {
         int count = group.childCount;
         for(int i=0;i<count;i++)
+        {
+            Destroy(group.GetChild(i).gameObject);
+        }
+    }
+    private void ClearView()
+    {
+        int count = group.childCount;
+        for (int i = 0; i < count; i++)
         {
             Destroy(group.GetChild(i).gameObject);
         }

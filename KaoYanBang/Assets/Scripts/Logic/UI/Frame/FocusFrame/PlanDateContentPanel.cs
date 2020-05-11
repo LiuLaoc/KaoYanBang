@@ -34,6 +34,12 @@ public class PlanDateContentPanel : UIPanel
     }
     protected void UpdateView()
     {
+        int count = content.childCount;
+        for (int i = 0; i < count; i++)
+        {
+            Destroy(content.GetChild(0).gameObject);
+        }
+        MainFrameModel.Instance.allPlan.Clear();
         GetPlanMsg msg = new GetPlanMsg(NetDataManager.Instance.user.user_id);
         MsgManager.Instance.NetMsgCenter.NetGetPlan(msg, (responds) =>
          {

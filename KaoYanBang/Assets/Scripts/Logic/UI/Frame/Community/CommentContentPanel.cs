@@ -7,6 +7,7 @@ public class CommentContentPanel : UIPanel
 {
     #region view
     [SerializeField] private PostFrame postFrame;
+
     #endregion
     #region model
     #endregion

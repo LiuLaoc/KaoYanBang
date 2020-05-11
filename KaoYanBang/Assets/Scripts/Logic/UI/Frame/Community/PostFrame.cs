@@ -8,18 +8,38 @@ using UnityEngine.UI;
 public class PostFrame : UIFrame
 {
     #region view
+    private InputField commentIfd;
     private Text titleTxt;
     private Button backBtn;
     private Text postContent;
     private Text commentNumTxt;
     private Text moduleTxt;
     private Transform CommentContentPanel;
+    private Button commentBtn;
     #endregion
     #region Model
     public Invitation post { private set; get; }
-    public List<Comment> allComment { private set; get; }
-    private List<CommentPrefab> allCommentPrefab { set; get; }
+    public List<Comment> allComment { private set; get; } = new List<Comment>();
+    private List<CommentPrefab> allCommentPrefab { set; get; } = new List<CommentPrefab>();
     #endregion
+    private void Awake()
+    {
+        BindView();
+        AddListener();
+    }
+    private void AddListener()
+    {
+        backBtn.onClick.AddListener(() => UIMgr.Instance.RemoveFrame());
+        commentBtn.onClick.AddListener(() =>
+        {
+            AddCommentMsg msg = new AddCommentMsg(post.invitation_id,NetDataManager.Instance.user.user_id,commentIfd.text);
+            MsgManager.Instance.NetMsgCenter.NetAddComment(msg,(respond)=>
+            {
+                UpdateView();
+                commentIfd.text = "";
+            });
+        });
+    }
     private void BindView()
     {
         var headerPanel = transform.Find("HeaderPanel");
@@ -30,13 +50,22 @@ public class PostFrame : UIFrame
         commentNumTxt = post.Find("CommentNumTxt").GetComponent<Text>();
         moduleTxt = post.Find("ModuleImg").Find("ModuleTxt").GetComponent<Text>();
         CommentContentPanel = transform.Find("Scroll View").Find("Viewport").Find("Content").Find("CommentContentPanel");
+        commentBtn = transform.Find("FooterPanel").Find("CommentBtn").GetComponent<Button>();
+        commentIfd = transform.Find("FooterPanel").Find("CommentIfd").GetComponent<InputField>();
     }
     public void Init(Invitation post)
     {
         this.post = post;
+        AddScanMsg msg = new AddScanMsg(post.invitation_id);
+        MsgManager.Instance.NetMsgCenter.NetAddScan(msg, (respond) =>
+        {
+            post.scan_number++;
+            UpdateView();
+        });
     }
     private void UpdateView()
     {
+        ClearView();
         titleTxt.text = post.invitation_title;
         postContent.text = post.content;
         commentNumTxt.text = post.scan_number.ToString();
@@ -53,7 +82,7 @@ public class PostFrame : UIFrame
              }
          });
         //Comment
-        GetCommentMsg commentMsg = new GetCommentMsg(post.plate);
+        GetCommentMsg commentMsg = new GetCommentMsg(post.invitation_id);
         MsgManager.Instance.NetMsgCenter.NetGetComment(commentMsg, (respond) =>
          {
              allComment = JsonHelper.DeserializeObject<List<Comment>>(respond.data);
@@ -66,5 +95,15 @@ public class PostFrame : UIFrame
              }
              CommentContentPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(1080, 768.9f*allCommentPrefab.Count);
          });
+    }
+    private void ClearView()
+    {
+        int count = CommentContentPanel.childCount;
+        for(int i=0;i<count;i++)
+        {
+            Destroy(CommentContentPanel.GetChild(i).gameObject);
+        }
+        allCommentPrefab.Clear();
+        allComment.Clear();
     }
 }

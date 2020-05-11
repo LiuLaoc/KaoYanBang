@@ -21,6 +21,7 @@ public class PostPrefab : MonoBehaviour
     private void Awake()
     {
         BindView();
+        AddListeners();
     }
     private void BindView()
     {
@@ -36,10 +37,25 @@ public class PostPrefab : MonoBehaviour
         enterBtn.onClick.AddListener(()=> 
         {
             UIMgr.Instance.CreateFrame("PostFrame");
+            var frame = UIMgr.Instance.GetTopFrame() as PostFrame;
+            frame.Init(invitation);
         });
     }
     public void Init(Invitation invitation)
     {
         this.invitation = invitation;
+        UpdateView();
+    }
+    private void UpdateView()
+    {
+        nameTxt.text = invitation.invitation_title;
+        contentTxt.text = invitation.content;
+        dateTxt.text = invitation.create_time;
+        GetCommentMsg msg = new GetCommentMsg(invitation.invitation_id);
+        MsgManager.Instance.NetMsgCenter.NetGetComment(msg,(respond)=> 
+        {
+            var list = JsonHelper.DeserializeObject<List<Comment>>(respond.data);
+            commentNumTxt.text = list.Count.ToString();
+        });
     }
 }

@@ -87,3 +87,78 @@
 - 返回数据:
   - List<Plan>
 # 资讯界面
+
+## 获取学校论坛
+
+- 接口参数:无
+- 返回数据:
+  - List<forum>
+
+## 获取学校论坛-帖子内容
+
+- 接口参数:
+  + ForumID(int)
+- 返回数据:
+  - List<info>
+
+## 获取院校资讯
+
+- 接口参数:无
+- 返回数据:
+  - List<info>
+
+## 获取院校资讯-资讯内容
+
+- 接口参数:
+  + SchoolID(int)
+- 返回数据:
+  - List<info>
+
+## 获取招生简章
+
+  - 接口参数：无
+  - 返回数据：
+    - List<info> 
+
+## 获取招生简章-简章内容
+
+- 接口参数:
+  + ArticleID(int)
+- 返回数据:
+  - List<info>
+
+## 获取考研书籍
+
+  - 接口参数：无
+  - 返回数据：
+    - List<bookinfo> 
+
+## 获取分数线
+
+  - 接口参数：
+    + SchoolID(int)，MajorID(int)
+  - 返回数据：
+    - Table<Scoreline> 
+
+## 获取报录比
+
+  - 接口参数：
+    + SchoolID(int)，MajorID(int)
+  - 返回数据：
+    - Table<Reportingratio>
+
+## 获取专业目录
+
+  - 接口参数：
+    + SchoolID(int)，CollegeID(int)
+  - 返回数据：
+    - Table<Majorcatalogue>
+
+## 获取复试分数线
+
+  - 接口参数：
+    + SchoolID(int)，MajorID(int)，YearID(int)
+  - 返回数据：
+    - Table<Score> 
+
+# 个人界面

@@ -26,6 +26,7 @@ public class InfoPanel : UIPanel
             if(value)
             {
                 selectIndex = 0;
+                UpdateView();
             }
         });
         toogles[1].onValueChanged.AddListener((value) =>
@@ -33,6 +34,7 @@ public class InfoPanel : UIPanel
             if (value)
             {
                 selectIndex = 1;
+                UpdateView();
             }
         });
         toogles[2].onValueChanged.AddListener((value) =>
@@ -40,6 +42,7 @@ public class InfoPanel : UIPanel
             if (value)
             {
                 selectIndex = 2;
+                UpdateView();
             }
         });
     }

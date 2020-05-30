@@ -11,8 +11,10 @@ public class PostPrefab : MonoBehaviour
     private Button enterBtn;
     private Image headerImg;
     private Text nameTxt;
+    private Text titleTxt;
     private Text contentTxt;
     private Text dateTxt;
+    private Text tagTxt;
     private Text commentNumTxt;
     #endregion
     #region model
@@ -28,6 +30,7 @@ public class PostPrefab : MonoBehaviour
         enterBtn = GetComponent<Button>();
         headerImg = transform.Find("HeaderImg").GetComponent<Image>();
         nameTxt = transform.Find("NameTxt").GetComponent<Text>();
+        titleTxt = transform.Find("TitleTxt").GetComponent<Text>();
         contentTxt = transform.Find("ContentTxt").GetComponent<Text>();
         dateTxt = transform.Find("DateTxt").GetComponent<Text>();
         commentNumTxt = transform.Find("CommentNumTxt").GetComponent<Text>();
@@ -49,6 +52,13 @@ public class PostPrefab : MonoBehaviour
     private void UpdateView()
     {
         nameTxt.text = invitation.invitation_title;
+        GetUserByIdMsg userMsg = new GetUserByIdMsg(invitation.post_user);
+        MsgManager.Instance.NetMsgCenter.NetGetUserById(userMsg, (respond) =>
+        {
+            var user = JsonHelper.DeserializeObject<User>(respond.data);
+            nameTxt.text = user.nickname;
+        });
+        titleTxt.text = invitation.invitation_title;
         contentTxt.text = invitation.content;
         dateTxt.text = invitation.create_time;
         GetCommentMsg msg = new GetCommentMsg(invitation.invitation_id);

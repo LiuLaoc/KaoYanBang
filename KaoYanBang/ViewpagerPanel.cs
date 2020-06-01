@@ -13,20 +13,18 @@ public class ViewpagerPanel : UIPanel
     #endregion
     #region model
     private int nowImgIndex=0;
+    private List<RectTransform> protected override void BindView()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void AddListener()
+    {
+        throw new System.NotImplementedException();
+    }
     #endregion
     #region prefabResource
     #endregion
-    protected override void AddListener()
-    {
 
-    }
 
-    protected override void BindView()
-    {
-        showTrans = transform.Find("ShowTrans").GetComponent<RectTransform>();
-    }
-    private void UpdateView()
-    {
-
-    }
 }

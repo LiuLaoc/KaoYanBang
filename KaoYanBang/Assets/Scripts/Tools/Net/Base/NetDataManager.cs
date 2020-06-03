@@ -351,5 +351,24 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             HttpCenter.Instance.Send(httpRequest);
         };
         #endregion
+        #region Info
+        MsgManager.Instance.NetMsgCenter.NetGetAllCarousels += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "carousel/getAllCarousels",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        #endregion
     }
 }

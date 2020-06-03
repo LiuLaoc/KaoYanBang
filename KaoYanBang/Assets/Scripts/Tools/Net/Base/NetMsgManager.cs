@@ -32,6 +32,9 @@ namespace liulaoc.Net
         public Action<AddPlanMsg, Action<HttpResponds>> NetAddPlan;
         public Action<ChangePlanStatusMsg, Action<HttpResponds>> NetChangePlanStatus;
         #endregion
+        #region Info
+        public Action<GetAllCarouselsMsg, Action<HttpResponds>> NetGetAllCarousels;
+        #endregion
     }
 
 }

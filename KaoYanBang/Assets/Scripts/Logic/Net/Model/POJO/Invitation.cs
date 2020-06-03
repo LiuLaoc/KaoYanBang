@@ -17,5 +17,8 @@ namespace POJO
         public string update_time { get; set; }
         public string create_time { get; set; }
 
+        public int invitation_type { get; set; }
+        public int school_id { get; set; }
+
     }
 }

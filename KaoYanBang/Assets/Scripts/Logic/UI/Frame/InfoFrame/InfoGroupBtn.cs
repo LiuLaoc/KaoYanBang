@@ -16,22 +16,21 @@ public class InfoGroupBtn : UIPanel
     {
         gradeBtn.onClick.AddListener(() =>
         {
-            UIMgr.Instance.CreateFrame("");
+            UIMgr.Instance.CreateFrame("GradeFrame");
         });
         reportBtn.onClick.AddListener(() =>
         {
-            UIMgr.Instance.CreateFrame("");
+            UIMgr.Instance.CreateFrame("ReportFrame");
         });
         subjectBtn.onClick.AddListener(() =>
         {
-            UIMgr.Instance.CreateFrame("");
+            UIMgr.Instance.CreateFrame("SubjectFrame");
         });
         regradeBtn.onClick.AddListener(() =>
         {
-            UIMgr.Instance.CreateFrame("");
+            UIMgr.Instance.CreateFrame("ReGradeFrame");
         });
     }
-
     protected override void BindView()
     {
         gradeBtn = transform.Find("Grade").Find("GradeBtn").GetComponent<Button>();

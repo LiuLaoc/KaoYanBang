@@ -30,13 +30,13 @@ public class ViewPagePrefab : MonoBehaviour
     {
         enterBtn.onClick.AddListener(()=> 
         {
-            WWW www = new WWW(carousel.url);
+            WWW www = new WWW(carousel.content);
             Application.OpenURL(www.url);
         });
     }
     private void Base64ToImg(Image imgComponent)
     {
-        string base64 = carousel.content;
+        string base64 = carousel.url;
         byte[] bytes = Convert.FromBase64String(base64);
         Texture2D tex2D = new Texture2D(100, 100);
         tex2D.LoadImage(bytes);

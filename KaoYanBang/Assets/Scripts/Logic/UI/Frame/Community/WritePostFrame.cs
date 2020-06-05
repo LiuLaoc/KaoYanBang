@@ -56,6 +56,11 @@ public class WritePostFrame : UIFrame
         });
         confirmBtn.onClick.AddListener(() =>
         {
+            if(dropDown.options.Count == 0 || titleIfd.text == "" || contentIfd.text == "")
+            {
+                MsgManager.Instance.GlobalMsgManager.ShowErrorPanel("标签、标题、内容请勿为空");
+                return; 
+            }
             AddPostMsg postMsg = new AddPostMsg(contentIfd.text,titleIfd.text,isSelect,NetDataManager.Instance.user.user_id);
             MsgManager.Instance.NetMsgCenter.NetAddPost(postMsg, (respond) =>
              {

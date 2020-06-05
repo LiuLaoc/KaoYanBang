@@ -14,6 +14,10 @@ public class PersonInfoPanel : UIPanel
     private Button pwdBtn;
     private Button phoneBtn;
     private Button nameBtn;
+    private Button schoolBtn;
+    private Button sbjBtn;
+    private Text schoolTxt;
+    private Text subjectTxt;
     #endregion
     #region model
     private string Name => NetDataManager.Instance.user.username;
@@ -43,9 +47,13 @@ public class PersonInfoPanel : UIPanel
         nameTxt = group.Find("UserName").Find("NameTxt").GetComponent<Text>();
         phoneTxt = group.Find("Phone").Find("PhoneTxt").GetComponent<Text>();
         pwdTxt = group.Find("Password").Find("PwdTxt").GetComponent<Text>();
+        schoolTxt = group.Find("School").Find("SchoolTxt").GetComponent<Text>();
+        subjectTxt = group.Find("Subject").Find("SubjectTxt").GetComponent<Text>();
         nameBtn = group.Find("UserName").GetComponent<Button>();
         phoneBtn = group.Find("Phone").GetComponent<Button>();
         pwdBtn = group.Find("Password").GetComponent<Button>();
+        schoolBtn = group.Find("Shcool").GetComponent<Button>();
+        sbjBtn = group.Find("Subject").GetComponent<Button>();
         UpdateView();
     }
     protected void UpdateView()

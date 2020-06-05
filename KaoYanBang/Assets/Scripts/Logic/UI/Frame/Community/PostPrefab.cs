@@ -19,6 +19,7 @@ public class PostPrefab : MonoBehaviour
     #endregion
     #region model
     private Invitation invitation;
+    private bool isCommnuty;
     #endregion
     private void Awake()
     {
@@ -44,23 +45,31 @@ public class PostPrefab : MonoBehaviour
             frame.Init(invitation);
         });
     }
-    public void Init(Invitation invitation)
+    public void Init(Invitation invitation,bool isCommunity = true)
     {
         this.invitation = invitation;
+        this.isCommnuty = isCommunity;
         UpdateView();
     }
     private void UpdateView()
     {
-        nameTxt.text = invitation.invitation_title;
         GetUserByIdMsg userMsg = new GetUserByIdMsg(invitation.post_user);
         MsgManager.Instance.NetMsgCenter.NetGetUserById(userMsg, (respond) =>
         {
             var user = JsonHelper.DeserializeObject<User>(respond.data);
-            nameTxt.text = user.nickname;
+            nameTxt.text = user.username;
         });
-        titleTxt.text = invitation.invitation_title;
-        contentTxt.text = invitation.content;
+        titleTxt.text = "标题 " + invitation.invitation_title;
+        contentTxt.text = "内容 " + invitation.content;
         dateTxt.text = invitation.create_time;
+        if(isCommnuty)
+        {
+            tagTxt.text = "#";
+        }
+        else
+        {
+            tagTxt.text = "#";
+        }
         GetCommentMsg msg = new GetCommentMsg(invitation.invitation_id);
         MsgManager.Instance.NetMsgCenter.NetGetComment(msg,(respond)=> 
         {

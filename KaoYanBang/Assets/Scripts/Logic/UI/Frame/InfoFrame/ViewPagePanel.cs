@@ -57,7 +57,7 @@ public class ViewPagePanel : UIPanel
         {
             var allCar = JsonHelper.DeserializeObject<List<Carousel>>(respond.data);
             //初始化数据
-            if (allCar == null)
+            if (allCar == null || allCar.Count == 0)
             {
                 return;
             }

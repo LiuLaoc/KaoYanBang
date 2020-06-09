@@ -29,7 +29,7 @@ public class HotMoudlePanel : UIPanel
     protected void UpdateView()
     {
         ClearView();
-        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        GetAllMsg msg = new GetAllMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
         {
             var list = JsonHelper.DeserializeObject<List<POJO.Subject>>(respond.data);

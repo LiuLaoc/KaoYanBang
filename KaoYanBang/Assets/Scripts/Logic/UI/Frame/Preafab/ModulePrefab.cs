@@ -15,11 +15,6 @@ public class ModulePrefab : MonoBehaviour
     private POJO.Subject subject;
     private bool isInit = false;
     #endregion
-    private void Awake()
-    {
-        BindView();
-        AddListener();
-    }
 
     private void AddListener()
     {
@@ -41,6 +36,8 @@ public class ModulePrefab : MonoBehaviour
     {
         isInit = true;
         this.subject = sbj;
+        BindView();
+        AddListener();
         UpdateView();
     }
 

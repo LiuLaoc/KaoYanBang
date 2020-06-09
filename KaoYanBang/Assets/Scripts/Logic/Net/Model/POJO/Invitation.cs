@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
+public enum InvitationType
+{
+    Regulation = 1,
+    Invitation =0,
+}
 namespace POJO
 {
     public class Invitation

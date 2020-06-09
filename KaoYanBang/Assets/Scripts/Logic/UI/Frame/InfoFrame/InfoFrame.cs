@@ -14,7 +14,7 @@ public class InfoFrame : UIFrame
         todayEditBtn = transform.Find("TodayEditBtn").GetComponent<Button>();
         todayEditBtn.onClick.AddListener(() =>
         {
-            UIMgr.Instance.CreateFrame("WritePostFrame");
+            UIMgr.Instance.CreateFrame("WriteInfoPostFrame");
         });
     }
 }

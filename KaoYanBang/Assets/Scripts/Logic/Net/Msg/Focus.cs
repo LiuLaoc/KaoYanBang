@@ -41,10 +41,6 @@ public class AddPlanMsg:BaseMsg
     public int plan_type { get; set; }
     public int user_id { get; set; }
 }
-public class GetAllSubjectMsg:BaseMsg
-{
-
-}
 public class GetCommentMsg:BaseMsg
 {
     public int invitation_id { get; set; }

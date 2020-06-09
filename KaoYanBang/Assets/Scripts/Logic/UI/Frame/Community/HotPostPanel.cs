@@ -42,17 +42,21 @@ public class HotPostPanel : UIPanel
             Debug.Log(responds.data);
             List<Invitation> invitations = JsonHelper.DeserializeObject<List<Invitation>>(responds.data);
             int count = invitations.Count > 3 ? 3 : invitations.Count;
-            for(int i=0;i< count;i++)
+            for (int i = 0; i < count; i++)
             {
-                var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
-                go.GetComponent<PostPrefab>().Init(invitations[i]);
+                if (invitations[i].invitation_type == (int)InvitationType.Invitation)
+                {
+
+                    var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
+                    go.GetComponent<PostPrefab>().Init(invitations[i]);
+                }
             }
         });
     }
     private void ClearView()
     {
         int count = group.childCount;
-        for(int i=0;i<count;i++)
+        for (int i = 0; i < count; i++)
         {
             Destroy(group.GetChild(i).gameObject);
         }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ViewPagePanel : UIPanel
 {
     #region 参数设置
-    [SerializeField] private float showTimeInterval = 2.0f;
+    [SerializeField] private float showTimeInterval = 20f;
     [SerializeField] private float moveSpeedTime = 1.0f;
     #endregion
     #region view
@@ -16,7 +16,7 @@ public class ViewPagePanel : UIPanel
     private Button nextBtn;
     private RectTransform leftPageRec;
     private RectTransform rightPageRec;
-    private Transform group;
+    [SerializeField]private Transform group;
     #endregion
     #region model
     private int nowImgIndex = 0;
@@ -36,9 +36,15 @@ public class ViewPagePanel : UIPanel
     protected override void AddListener()
     {
         //显示上一个轮播图
-        lastBtn.onClick.AddListener(ShowLastPage);
-        nextBtn.onClick.AddListener(ShowNextPage);
+        lastBtn.onClick.AddListener(()=> 
+        {
+            StartCoroutine(ShowLastPage());
+        });
         //显示下一个轮播图
+        nextBtn.onClick.AddListener(()=> 
+        {
+            StartCoroutine(ShowNextPage());
+        });
     }
     protected override void BindView()
     {
@@ -61,25 +67,29 @@ public class ViewPagePanel : UIPanel
             {
                 return;
             }
-            for(int i=0;i<allCar.Count;i++)
+            for(int i= 0; i<allCar.Count;i++)
             {
-                GameObject go = Instantiate(pagePrefab, transform);
+                GameObject go = Instantiate(pagePrefab, group);
                 var rec = go.GetComponent<RectTransform>();
                 var mono = go.GetComponent<ViewPagePrefab>();
+                mono.Init(allCar[i]);
                 allPages.Add(mono);
-                if (i==0)
+                if (i==nowImgIndex)
                 {
-                    rec.anchoredPosition = nowPageRec.rect.position;
+                    rec.localPosition = nowPageRec.localPosition;
                     rec.sizeDelta = nowPageRec.rect.size;
                 }
                 else
                 {
-                    rec.anchoredPosition = leftPageRec.rect.position;
+                    rec.localPosition = leftPageRec.localPosition;
                     rec.sizeDelta = leftPageRec.rect.size;
                 }
             }
             //开始播放
-            StartCoroutine(CirclePlayViewPageAsync());
+            if(allPages.Count >1)
+            {
+                StartCoroutine(CirclePlayViewPageAsync());
+            }
         });
     }
     private void OnDisable()
@@ -101,61 +111,90 @@ public class ViewPagePanel : UIPanel
     {
         while(allPages != null)
         {
+            timer = 0;
             while (timer <= showTimeInterval)
             {
                 timer += Time.deltaTime;
                 yield return null;
             }
             //计时结束，移动页面
-            ShowNextPage();
+            yield return StartCoroutine(ShowNextPage());
+        }
+
+
+    }
+    private IEnumerator ShowNextPage()
+    {
+        bool flag = false;
+        var nowPage = allPages[nowImgIndex];
+        if(nowImgIndex + 1 >= allPages.Count)
+        {
+            for(int i=0;i<allPages.Count-1;i++)
+            {
+                allPages[i].GetComponent<RectTransform>().localPosition = leftPageRec.localPosition;
+                flag = true;
+            }
+            nowImgIndex = 0;
+        }
+        else
+        {
+            nowImgIndex++;
+        }
+        var nextPages = allPages[nowImgIndex];
+        StartCoroutine(MovePage(nowPage,rightPageRec));
+        StartCoroutine(MovePage(nextPages,nowPageRec));
+        while (isMove)
+        {
             yield return null;
         }
-
+        if (flag)
+        {
+            nowPage.GetComponent<RectTransform>().localPosition = leftPageRec.localPosition;
+        }
 
     }
-    private void ShowNextPage()
+    private IEnumerator ShowLastPage()
     {
-        if(isMove)
+        bool flag = false;
+        var nowPage = allPages[nowImgIndex];
+        if(nowImgIndex-1 < 0)
         {
-            if (isMove)
+            for(int i=1;i<allPages.Count;i++)
             {
-                return;
+                allPages[i].GetComponent<RectTransform>().localPosition = rightPageRec.localPosition;
+                flag = true;
             }
+            nowImgIndex = allPages.Count - 1;
         }
-        var nowPage = allPages[nowImgIndex];
-        nowImgIndex = (nowImgIndex + 1) % allPages.Count;
-        var nextPages = allPages[nowImgIndex];
-        StartCoroutine(MovePage(nowPage,leftPageRec));
-        StartCoroutine(MovePage(nextPages,nowPageRec));
-    }
-    private void ShowLastPage()
-    {
-        if (isMove)
+        else
         {
-            return;
-        }
-        var nowPage = allPages[nowImgIndex];
-        nowImgIndex--;
-        if(nowImgIndex < 0)
-        {
-            nowImgIndex = allPages.Count - 1 + nowImgIndex;
+            nowImgIndex--;
         }
         var nextPages = allPages[nowImgIndex];
-        StartCoroutine(MovePage(nowPage, rightPageRec));
+        StartCoroutine(MovePage(nowPage, leftPageRec));
         StartCoroutine(MovePage(nextPages, nowPageRec));
+        while (isMove)
+        {
+            yield return null;
+        }
+        if (flag)
+        {
+            nowPage.GetComponent<RectTransform>().localPosition = rightPageRec.localPosition;
+        }
+
     }
     private IEnumerator MovePage(ViewPagePrefab page,RectTransform target)
     {
         isMove = true;
         var timer = 0f;
         var rec = page.GetComponent<RectTransform>();
-        Vector2 startPos = rec.position;
+        Vector2 startPos = rec.localPosition;
         while (timer <= moveSpeedTime)
         {
             timer += Time.deltaTime;
             float t = timer / moveSpeedTime;
-            Vector2 pos = Vector2.Lerp(startPos, target.position, t);
-            rec.position = pos;
+            Vector2 pos = Vector2.Lerp(startPos, target.localPosition, t);
+            rec.localPosition = pos;
             yield return null;
         }
         isMove = false;

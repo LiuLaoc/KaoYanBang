@@ -32,7 +32,7 @@ public class PostListFrame : UIFrame
 
     private void AddListener()
     {
-        
+
     }
 
     private void BindView()
@@ -42,7 +42,7 @@ public class PostListFrame : UIFrame
 
     private void OnEnable()
     {
-        if(isinit)
+        if (isinit)
         {
             UpdateView();
         }
@@ -50,7 +50,7 @@ public class PostListFrame : UIFrame
     private void OnDisable()
     {
         int count = group.childCount;
-        for(int i=0;i<count;i++)
+        for (int i = 0; i < count; i++)
         {
             Destroy(group.GetChild(0).gameObject);
         }
@@ -68,11 +68,14 @@ public class PostListFrame : UIFrame
                     var list = JsonHelper.DeserializeObject<List<POJO.Invitation>>(respond.data);
                     foreach (var post in list)
                     {
-                        var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
-                        var prefab = go.GetComponent<PostPrefab>();
-                        prefab.Init(post);
-                        allPost.Add(prefab);
-                        group.GetComponent<RectTransform>().sizeDelta = new Vector2(1063, 433.59f * allPost.Count);
+                        if (post.invitation_type == (int)InvitationType.Invitation)
+                        {
+                            var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
+                            var prefab = go.GetComponent<PostPrefab>();
+                            prefab.Init(post);
+                            allPost.Add(prefab);
+                            group.GetComponent<RectTransform>().sizeDelta = new Vector2(1063, 433.59f * allPost.Count);
+                        }
                     }
                 });
                 break;
@@ -83,11 +86,14 @@ public class PostListFrame : UIFrame
                     var list = JsonHelper.DeserializeObject<List<POJO.Invitation>>(respond.data);
                     foreach (var post in list)
                     {
-                        var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
-                        var prefab = go.GetComponent<PostPrefab>();
-                        prefab.Init(post);
-                        allPost.Add(prefab);
-                        group.GetComponent<RectTransform>().sizeDelta = new Vector2(1063, 433.59f * allPost.Count);
+                        if (post.invitation_type == (int)InvitationType.Invitation)
+                        {
+                            var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
+                            var prefab = go.GetComponent<PostPrefab>();
+                            prefab.Init(post);
+                            allPost.Add(prefab);
+                            group.GetComponent<RectTransform>().sizeDelta = new Vector2(1063, 433.59f * allPost.Count);
+                        }
                     }
                 });
                 break;
@@ -98,17 +104,20 @@ public class PostListFrame : UIFrame
                     var list = JsonHelper.DeserializeObject<List<POJO.Invitation>>(respond.data);
                     foreach (var post in list)
                     {
-                        var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
-                        var prefab = go.GetComponent<PostPrefab>();
-                        prefab.Init(post);
-                        allPost.Add(prefab);
-                        group.GetComponent<RectTransform>().sizeDelta = new Vector2(1063, 433.59f * allPost.Count);
+                        if (post.invitation_type == (int)InvitationType.Invitation)
+                        {
+                            var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
+                            var prefab = go.GetComponent<PostPrefab>();
+                            prefab.Init(post);
+                            allPost.Add(prefab);
+                            group.GetComponent<RectTransform>().sizeDelta = new Vector2(1063, 433.59f * allPost.Count);
+                        }
                     }
                 });
                 break;
         }
     }
-    public void Init(PostFrameType type,POJO.Subject sbj = null)
+    public void Init(PostFrameType type, POJO.Subject sbj = null)
     {
         this.type = type;
         module = sbj;

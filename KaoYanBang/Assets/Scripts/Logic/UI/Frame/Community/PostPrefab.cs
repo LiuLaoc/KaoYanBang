@@ -21,11 +21,6 @@ public class PostPrefab : MonoBehaviour
     private Invitation invitation;
     private bool isCommnuty;
     #endregion
-    private void Awake()
-    {
-        BindView();
-        AddListeners();
-    }
     private void BindView()
     {
         enterBtn = GetComponent<Button>();
@@ -35,6 +30,7 @@ public class PostPrefab : MonoBehaviour
         contentTxt = transform.Find("ContentTxt").GetComponent<Text>();
         dateTxt = transform.Find("DateTxt").GetComponent<Text>();
         commentNumTxt = transform.Find("CommentNumTxt").GetComponent<Text>();
+        tagTxt = transform.Find("TagTxt").GetComponent<Text>();
     }
     private void AddListeners()
     {
@@ -49,6 +45,8 @@ public class PostPrefab : MonoBehaviour
     {
         this.invitation = invitation;
         this.isCommnuty = isCommunity;
+        BindView();
+        AddListeners();
         UpdateView();
     }
     private void UpdateView()

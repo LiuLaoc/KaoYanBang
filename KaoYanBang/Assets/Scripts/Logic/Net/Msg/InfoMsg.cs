@@ -7,7 +7,3 @@ public class GetAllCarouselsMsg:BaseMsg
 {
     
 }
-public class Getinvitationbyschool:BaseMsg
-{
-
-}

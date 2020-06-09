@@ -17,5 +17,7 @@ namespace POJO
         public int follow { get; set; }
         public string head_sculpture { get; set; }
 
+        public int school_id { get; set; }
+        public int subject_id { get; set; }
     }
 }

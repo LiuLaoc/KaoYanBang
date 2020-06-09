@@ -60,7 +60,7 @@ public class AddPlanFrame : UIFrame
     }
     private void UpdateView()
     {
-        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        GetAllMsg msg = new GetAllMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (responds) =>
          {
              var list = JsonHelper.DeserializeObject<List<POJO.Subject>>(responds.data);

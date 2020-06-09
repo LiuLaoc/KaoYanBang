@@ -41,18 +41,22 @@ public class LikeMsg:BaseMsg
 }
 public class AddPostMsg:BaseMsg
 {
-    public AddPostMsg(string content, string invitation_title, int plate, int post_user)
+    public AddPostMsg(string content, string invitation_title, int plate, int post_user, int invitation_type, int school_id)
     {
         this.content = content;
         this.invitation_title = invitation_title;
         this.plate = plate;
         this.post_user = post_user;
+        this.invitation_type = invitation_type;
+        this.school_id = school_id;
     }
 
     public string content { get; set; } 
     public string invitation_title { get; set; }
     public int plate { get; set; }
     public int post_user { get;set; }
+    public int invitation_type { get; set; }
+    public int school_id { get; set; }
 
 }
 public class GetPlateInvititionMsg:BaseMsg

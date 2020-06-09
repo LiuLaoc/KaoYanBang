@@ -69,7 +69,7 @@ public class PostFrame : UIFrame
         titleTxt.text = post.invitation_title;
         postContent.text = post.content;
         commentNumTxt.text = post.scan_number.ToString();
-        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        GetAllMsg msg = new GetAllMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
          {
              var list = JsonHelper.DeserializeObject<List<Subject>>(respond.data);

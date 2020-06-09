@@ -9,6 +9,7 @@ public class ViewPagePrefab : MonoBehaviour
     #region view
     private Image viewImg;
     private Button enterBtn;
+    private RectTransform rect;
     #endregion
     #region model
     private Carousel carousel;
@@ -18,12 +19,13 @@ public class ViewPagePrefab : MonoBehaviour
         carousel = car;
         BindView();
         AddListener();
-        Base64ToImg(viewImg);
+        //Base64ToImg(viewImg);
     }
     private void BindView()
     {
         viewImg = GetComponent<Image>();
         enterBtn = GetComponent<Button>();
+        rect = GetComponent<RectTransform>();
     }
 
     private void AddListener()
@@ -38,7 +40,7 @@ public class ViewPagePrefab : MonoBehaviour
     {
         string base64 = carousel.url;
         byte[] bytes = Convert.FromBase64String(base64);
-        Texture2D tex2D = new Texture2D(100, 100);
+        Texture2D tex2D = new Texture2D((int)rect.rect.width,(int)rect.rect.height);
         tex2D.LoadImage(bytes);
         Sprite s = Sprite.Create(tex2D, new Rect(0, 0, tex2D.width, tex2D.height), new Vector2(0.5f, 0.5f));
         imgComponent.sprite = s;

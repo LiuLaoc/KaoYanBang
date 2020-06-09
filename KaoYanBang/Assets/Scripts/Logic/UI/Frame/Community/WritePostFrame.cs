@@ -35,7 +35,7 @@ public class WritePostFrame : UIFrame
 
     private void AddListener()
     {
-        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        GetAllMsg msg = new GetAllMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
          {
              var list = JsonHelper.DeserializeObject <List<POJO.Subject>>(respond.data);
@@ -61,7 +61,7 @@ public class WritePostFrame : UIFrame
                 MsgManager.Instance.GlobalMsgManager.ShowErrorPanel("标签、标题、内容请勿为空");
                 return; 
             }
-            AddPostMsg postMsg = new AddPostMsg(contentIfd.text,titleIfd.text,isSelect,NetDataManager.Instance.user.user_id);
+            AddPostMsg postMsg = new AddPostMsg(contentIfd.text,titleIfd.text,isSelect,NetDataManager.Instance.user.user_id,(int)InvitationType.Invitation,0);
             MsgManager.Instance.NetMsgCenter.NetAddPost(postMsg, (respond) =>
              {
                  UIMgr.Instance.RemoveFrame();
@@ -70,7 +70,7 @@ public class WritePostFrame : UIFrame
     }
     private void UpdateView()
     {
-        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        GetAllMsg msg = new GetAllMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
          {
              var list = JsonHelper.DeserializeObject<List<POJO.Subject>>(respond.data);

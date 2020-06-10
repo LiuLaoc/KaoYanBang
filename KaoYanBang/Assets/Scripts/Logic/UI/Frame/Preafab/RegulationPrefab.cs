@@ -1,4 +1,5 @@
-﻿using POJO;
+﻿using liulaoc.UI.Base;
+using POJO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,12 @@ public class RegulationPrefab : MonoBehaviour
     #endregion
     public void Init(Invitation post)
     {
+        enterBtn.onClick.AddListener(()=>
+        {
+            UIMgr.Instance.CreateFrame("RegulationFrame");
+            var frame = UIMgr.Instance.GetTopFrame();
+            frame.GetComponent<RegulationFrame>().Init(post);
+        });
         this.post = post;
         UpdateView();
     }

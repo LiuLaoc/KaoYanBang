@@ -81,3 +81,29 @@ public class AddCommentMsg:BaseMsg
     public int comment_user { get; set; }
     public string content { get; set; }
 }
+
+public class JudgeLikeMsg:BaseMsg
+{
+    public JudgeLikeMsg()
+    {
+    }
+
+    public JudgeLikeMsg(int comment_id, int user_id)
+    {
+        this.comment_id = comment_id;
+        this.user_id = user_id;
+    }
+
+    public int comment_id { get; set; }
+    public int user_id { get; set; }
+}
+
+public class GetLikeCountMsg:BaseMsg
+{
+    public GetLikeCountMsg(int comment_id)
+    {
+        this.comment_id = comment_id;
+    }
+
+    public int comment_id { get; set; }
+}

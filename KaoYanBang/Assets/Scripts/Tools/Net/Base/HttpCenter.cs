@@ -146,8 +146,8 @@ namespace liulaoc.Net.Http
                 }
                 yield return www.SendWebRequest();
                 Debug.Log(request.Url);
-                Debug.Log(www.responseCode + " " + request.Responds.data);
                 DealResult(www, request);
+                Debug.Log(www.responseCode + " " + request.Responds.data);
             }
         }
         private IEnumerator StartPut(HttpRequest request)

@@ -21,6 +21,7 @@ public class PostFrame : UIFrame
     public Invitation post { private set; get; }
     public List<Comment> allComment { private set; get; } = new List<Comment>();
     private List<CommentPrefab> allCommentPrefab { set; get; } = new List<CommentPrefab>();
+    private bool isLike = false;
     #endregion
     private void Awake()
     {

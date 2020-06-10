@@ -62,11 +62,30 @@ public class PostPrefab : MonoBehaviour
         dateTxt.text = invitation.create_time;
         if(isCommnuty)
         {
-            tagTxt.text = "#";
+            GetSubjectByIdMsg sbjMsg = new GetSubjectByIdMsg(invitation.plate);
+            MsgManager.Instance.NetMsgCenter.NetGetSubjectById(sbjMsg,(respond)=> 
+            {
+                var sbj = JsonHelper.DeserializeObject<Subject>(respond.data);
+                if(sbj == null)
+                {
+                    return;
+                }
+                tagTxt.text = "#" + sbj.subject_name;
+            });
         }
         else
         {
-            tagTxt.text = "#";
+            GetSchoolMsg schoolMsg = new GetSchoolMsg(invitation.school_id);
+            MsgManager.Instance.NetMsgCenter.NetGetSchoolById(schoolMsg,(respond)=> 
+            {
+                var school = JsonHelper.DeserializeObject<School>(respond.data);
+                if (school == null)
+                {
+                    return;
+                }
+                tagTxt.text = "#" + school.school_name;
+            });
+            
         }
         GetCommentMsg msg = new GetCommentMsg(invitation.invitation_id);
         MsgManager.Instance.NetMsgCenter.NetGetComment(msg,(respond)=> 

@@ -288,6 +288,8 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             };
             HttpCenter.Instance.Send(httpRequest);
         };
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetJudgeLike,Method.Post,"like/judgelike");
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetGetLikeCount,Method.Post,"like/countlike");
         #endregion
         #region 计划模块
         MsgManager.Instance.NetMsgCenter.NetGetPlan += (request, callbcak) =>

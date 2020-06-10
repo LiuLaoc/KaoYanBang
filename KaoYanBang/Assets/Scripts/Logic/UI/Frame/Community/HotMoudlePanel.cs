@@ -10,6 +10,7 @@ public class HotMoudlePanel : UIPanel
     #region
     private Transform group;
     private Button moreBtn;
+    
     #endregion
     protected override void AddListener()
     {
@@ -25,6 +26,7 @@ public class HotMoudlePanel : UIPanel
     {
         group = transform.Find("Group");
         moreBtn = transform.Find("MoreMoudle").Find("Button").GetComponent<Button>();
+        
     }
     protected void UpdateView()
     {

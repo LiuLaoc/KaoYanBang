@@ -1,4 +1,5 @@
-﻿using System;
+﻿using liulaoc.UI.Base;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class ViewPagePrefab : MonoBehaviour
         carousel = car;
         BindView();
         AddListener();
-        //Base64ToImg(viewImg);
+        Base64ToImg(viewImg);
     }
     private void BindView()
     {
@@ -32,13 +33,14 @@ public class ViewPagePrefab : MonoBehaviour
     {
         enterBtn.onClick.AddListener(()=> 
         {
-            WWW www = new WWW(carousel.content);
-            Application.OpenURL(www.url);
+            UIMgr.Instance.CreateFrame("CarouselFrame");
+            var frame = UIMgr.Instance.GetTopFrame();
+            frame.GetComponent<CarouselFrame>().Init(carousel);
         });
     }
     private void Base64ToImg(Image imgComponent)
     {
-        string base64 = carousel.url;
+        string base64 = carousel.url.Substring(23);
         byte[] bytes = Convert.FromBase64String(base64);
         Texture2D tex2D = new Texture2D((int)rect.rect.width,(int)rect.rect.height);
         tex2D.LoadImage(bytes);

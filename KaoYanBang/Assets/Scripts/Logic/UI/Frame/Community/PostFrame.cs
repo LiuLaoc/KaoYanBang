@@ -94,7 +94,9 @@ public class PostFrame : UIFrame
                  prefab.Init(comment);
                  allCommentPrefab.Add(prefab);
              }
-             CommentContentPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(1080, 768.9f*allCommentPrefab.Count);
+             var postY = 257.8f;
+             var commentY = 1336.2f * allCommentPrefab.Count;
+             CommentContentPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(1080, postY + commentY);
          });
     }
     private void ClearView()

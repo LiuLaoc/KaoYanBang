@@ -8,18 +8,16 @@ public class RecordPrefab : MonoBehaviour
     #region model
     #endregion
     #region view
-    private List<Text> allTexts;
+    private List<Text> allTexts = new List<Text>();
     #endregion
-    private void Awake()
-    {
-        var allTxt = GetComponentsInChildren<Text>();
-        foreach(var txt in allTexts)
-        {
-            allTexts.Add(txt);
-        }
-    }
     public void Init(List<string> showDatas)
     {
+        var count = transform.childCount;
+        for(int i=0;i<count;i++)
+        {
+            allTexts.Add(transform.GetChild(i).GetComponent<Text>());
+        }
+
         var id = 0;
         foreach(var str in showDatas)
         {

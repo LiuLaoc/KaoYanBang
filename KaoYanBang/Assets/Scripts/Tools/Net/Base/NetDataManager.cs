@@ -390,6 +390,9 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
         #region subject
         AddListener(ref MsgManager.Instance.NetMsgCenter.NetGetSubjectById,Method.Post,"subject/getsubjectbyid");
         #endregion
+        #region schoolScore
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetGetScoreBySchoolId,Method.Post, "score/selectbyid");
+        #endregion
     }
     private void AddListener<T>(ref Action<T,Action<HttpResponds>> registerEvent,Method methodType,string url) where T:BaseMsg
     {

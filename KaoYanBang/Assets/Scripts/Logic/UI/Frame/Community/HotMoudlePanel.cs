@@ -16,9 +16,7 @@ public class HotMoudlePanel : UIPanel
     {
         moreBtn.onClick.AddListener(() =>
         {
-            UIMgr.Instance.CreateFrame("PostListFrame");
-            var frame = UIMgr.Instance.GetTopFrame() as PostListFrame;
-            frame.Init(PostFrameType.Module);
+            UIMgr.Instance.CreateFrame("ModuleFrame");
         });
     }
 

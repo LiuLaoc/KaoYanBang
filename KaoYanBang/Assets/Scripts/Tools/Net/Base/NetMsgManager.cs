@@ -49,6 +49,9 @@ namespace liulaoc.Net
         #region Subject
         public Action<GetSubjectByIdMsg, Action<HttpResponds>> NetGetSubjectById;
         #endregion
+        #region score
+        public Action<GetScoreBySchoolIdMsg, Action<HttpResponds>> NetGetScoreBySchoolId;
+        #endregion
     }
 
 }

@@ -43,8 +43,11 @@ public class EssentialPostPanel : UIPanel
             int count = invitations.Count > 3 ? 3 : invitations.Count;
             for (int i = 0; i < count; i++)
             {
-                var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
-                go.GetComponent<PostPrefab>().Init(invitations[i]);
+                if(invitations[i].invitation_type == (int)InvitationType.Invitation)
+                {
+                    var go = Instantiate(UIResourceMgr.Instance.Get("PostPrefab"), group);
+                    go.GetComponent<PostPrefab>().Init(invitations[i]);
+                }
             }
         });
     }

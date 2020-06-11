@@ -34,6 +34,11 @@ public class AddPlanFrame : UIFrame
         });
         confirmBtn.onClick.AddListener(() =>
         {
+            if(tagDropdown.options.Count == 0)
+            {
+                MsgManager.Instance.GlobalMsgManager.ShowErrorPanel("没有选择标签");
+                return;
+            }
             var subName = tagDropdown.options[selectIndex];
             AddPlanMsg msg = new AddPlanMsg(DateTime.Now.ToString(), planContent.text, selectIndex, NetDataManager.Instance.user.user_id);
             MsgManager.Instance.NetMsgCenter.NetAddPlan(msg, (responds) =>
@@ -55,7 +60,7 @@ public class AddPlanFrame : UIFrame
     }
     private void UpdateView()
     {
-        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        GetAllMsg msg = new GetAllMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (responds) =>
          {
              var list = JsonHelper.DeserializeObject<List<POJO.Subject>>(responds.data);

@@ -41,18 +41,22 @@ public class LikeMsg:BaseMsg
 }
 public class AddPostMsg:BaseMsg
 {
-    public AddPostMsg(string content, string invitation_title, int plate, int post_user)
+    public AddPostMsg(string content, string invitation_title, int plate, int post_user, int invitation_type, int school_id)
     {
         this.content = content;
         this.invitation_title = invitation_title;
         this.plate = plate;
         this.post_user = post_user;
+        this.invitation_type = invitation_type;
+        this.school_id = school_id;
     }
 
     public string content { get; set; } 
     public string invitation_title { get; set; }
     public int plate { get; set; }
     public int post_user { get;set; }
+    public int invitation_type { get; set; }
+    public int school_id { get; set; }
 
 }
 public class GetPlateInvititionMsg:BaseMsg
@@ -76,4 +80,30 @@ public class AddCommentMsg:BaseMsg
     public int comment_invitation { get; set; }
     public int comment_user { get; set; }
     public string content { get; set; }
+}
+
+public class JudgeLikeMsg:BaseMsg
+{
+    public JudgeLikeMsg()
+    {
+    }
+
+    public JudgeLikeMsg(int comment_id, int user_id)
+    {
+        this.comment_id = comment_id;
+        this.user_id = user_id;
+    }
+
+    public int comment_id { get; set; }
+    public int user_id { get; set; }
+}
+
+public class GetLikeCountMsg:BaseMsg
+{
+    public GetLikeCountMsg(int comment_id)
+    {
+        this.comment_id = comment_id;
+    }
+
+    public int comment_id { get; set; }
 }

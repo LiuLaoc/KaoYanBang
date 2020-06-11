@@ -9,9 +9,10 @@ public static class JsonHelper
     public static T DeserializeObject<T>(string json) where T:class,new()
     {
         T t = null;
+        var jSetting = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
         try
         {
-            t = JsonConvert.DeserializeObject<T>(json);
+            t = JsonConvert.DeserializeObject<T>(json, jSetting);
         }
         catch(Exception ex)
         {

@@ -123,7 +123,7 @@ namespace liulaoc.Net.Http
                 www.certificateHandler = new AcceptAllCertificatesSignedWithASpecificKeyPublicKey();
                 www.downloadHandler = new DownloadHandlerBuffer();
                 www.SetRequestHeader("Content-Type", "application/json");
-                www.SetRequestHeader("Authorization", token);
+                www.SetRequestHeader("token", token);
                 yield return www.SendWebRequest();
                 DealResult(www, request);
             }
@@ -140,11 +140,14 @@ namespace liulaoc.Net.Http
                 www.certificateHandler = new AcceptAllCertificatesSignedWithASpecificKeyPublicKey();
                 www.downloadHandler = new DownloadHandlerBuffer();
                 www.SetRequestHeader("Content-Type", "application/json");
-                www.SetRequestHeader("Authorization", token);
+                if(token != null && token != "")
+                {
+                    www.SetRequestHeader("token", token);
+                }
                 yield return www.SendWebRequest();
                 Debug.Log(request.Url);
-                Debug.Log(www.responseCode + " " + request.Responds.data);
                 DealResult(www, request);
+                Debug.Log(www.responseCode + " " + request.Responds.data);
             }
         }
         private IEnumerator StartPut(HttpRequest request)
@@ -158,7 +161,7 @@ namespace liulaoc.Net.Http
                 www.certificateHandler = new AcceptAllCertificatesSignedWithASpecificKeyPublicKey();
                 www.downloadHandler = new DownloadHandlerBuffer();
                 www.SetRequestHeader("Content-Type", "application/json");
-                www.SetRequestHeader("Authorization", token);
+                www.SetRequestHeader("token", token);
                 yield return www.SendWebRequest();
                 DealResult(www, request);
             }
@@ -182,7 +185,7 @@ namespace liulaoc.Net.Http
                 www.certificateHandler = new AcceptAllCertificatesSignedWithASpecificKeyPublicKey();
                 www.downloadHandler = new DownloadHandlerBuffer();
                 www.SetRequestHeader("Content-Type", "application/json");
-                www.SetRequestHeader("Authorization", token);
+                www.SetRequestHeader("token", token);
                 yield return www.SendWebRequest();
                 DealResult(www, request);
             }
@@ -208,6 +211,7 @@ namespace liulaoc.Net.Http
                 request.Responds.Result = RespondsResult.Fail;
                 request.Responds.data = www.downloadHandler.text;
             }
+            request.Responds.token = www.GetResponseHeader("token");
         }
 
         private bool IsOk(long code)

@@ -21,6 +21,7 @@ public class PostFrame : UIFrame
     public Invitation post { private set; get; }
     public List<Comment> allComment { private set; get; } = new List<Comment>();
     private List<CommentPrefab> allCommentPrefab { set; get; } = new List<CommentPrefab>();
+    private bool isLike = false;
     #endregion
     private void Awake()
     {
@@ -69,7 +70,7 @@ public class PostFrame : UIFrame
         titleTxt.text = post.invitation_title;
         postContent.text = post.content;
         commentNumTxt.text = post.scan_number.ToString();
-        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        GetAllMsg msg = new GetAllMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
          {
              var list = JsonHelper.DeserializeObject<List<Subject>>(respond.data);

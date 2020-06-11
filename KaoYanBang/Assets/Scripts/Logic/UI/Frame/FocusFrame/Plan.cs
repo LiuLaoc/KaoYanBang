@@ -49,7 +49,7 @@ public class Plan : MonoBehaviour
     protected void UpdateView()
     {
         //更新TagTxt
-        GetAllSubjectMsg msg = new GetAllSubjectMsg();
+        GetAllMsg msg = new GetAllMsg();
         MsgManager.Instance.NetMsgCenter.NetGetAllSbj(msg, (respond) =>
          {
              var list = JsonHelper.DeserializeObject<List<POJO.Subject>>(respond.data);

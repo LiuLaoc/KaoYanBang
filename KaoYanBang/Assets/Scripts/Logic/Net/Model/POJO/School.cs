@@ -4,7 +4,7 @@ using System.Text;
 
 namespace POJO
 {
-    class School
+    public class School
     {
         public int school_id { get; set; }
         public string school_name { get; set; }

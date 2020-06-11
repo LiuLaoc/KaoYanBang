@@ -14,5 +14,6 @@ namespace liulaoc.Net.Http
     {
         public string data;
         public RespondsResult Result;
+        public string token;
     }
 }

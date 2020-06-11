@@ -19,6 +19,7 @@ public class CommentPrefab : MonoBehaviour
     #endregion
     #region Model
     private Comment comment;
+    private bool isLike = false;
     #endregion
     private void Awake()
     {
@@ -38,9 +39,26 @@ public class CommentPrefab : MonoBehaviour
             User user = JsonHelper.DeserializeObject<User>(respond.data);
             userNameTxt.text = user.username;
         });
+        JudgeLikeMsg likeMsg = new JudgeLikeMsg(comment.comment_id,NetDataManager.Instance.user.user_id);
+        MsgManager.Instance.NetMsgCenter.NetJudgeLike(likeMsg, (respond) =>
+         {
+             isLike = bool.Parse(respond.data);
+             if(isLike)
+             {
+                 likeBtn.image.color = new Color(255f,255f,255f);
+             }
+             else
+             {
+                 likeBtn.image.color = new Color(0, 0, 0);
+             }
+         });
         commentDateTxt.text = comment.create_time;
         commentContentTxt.text = comment.content;
-        likeTxt.text = comment.like_number.ToString();
+        GetLikeCountMsg likeCountMsg = new GetLikeCountMsg(comment.comment_id);
+        MsgManager.Instance.NetMsgCenter.NetGetLikeCount(likeCountMsg, (respond) =>
+         {
+             likeTxt.text = respond.data;
+         });
     }
     private void Addlistener()
     {
@@ -50,12 +68,28 @@ public class CommentPrefab : MonoBehaviour
         });
         likeBtn.onClick.AddListener(() =>
         {
-            LikeMsg msg = new LikeMsg(comment.comment_id, comment.comment_invitation, NetDataManager.Instance.user.user_id);
-            MsgManager.Instance.NetMsgCenter.NetLike(msg, (respond) =>
-             {
-                 var num = int.Parse(likeTxt.text);
-                 likeTxt.text = (num + 1).ToString();
-             });
+            if(!isLike)
+            {
+                LikeMsg msg = new LikeMsg(comment.comment_id, comment.comment_invitation, NetDataManager.Instance.user.user_id);
+                MsgManager.Instance.NetMsgCenter.NetLike(msg, (respond) =>
+                {
+                    var num = int.Parse(likeTxt.text);
+                    likeTxt.text = (num + 1).ToString();
+                    isLike = true;
+                    UpdateView();
+                });
+            }
+            else
+            {
+                LikeMsg msg = new LikeMsg(comment.comment_id, comment.comment_invitation, NetDataManager.Instance.user.user_id);
+                MsgManager.Instance.NetMsgCenter.NetLike(msg, (respond) =>
+                {
+                    var num = int.Parse(likeTxt.text);
+                    likeTxt.text = (num - 1).ToString();
+                    isLike = false;
+                    UpdateView();
+                });
+            }
         });
         commentBtn.onClick.AddListener(() =>
         {

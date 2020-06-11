@@ -15,6 +15,8 @@ namespace liulaoc.Net
         public Action<GetMyInvitationMsg, Action<HttpResponds>> NetGetMyInvitation;
         public Action<GetMyCommentMsg, Action<HttpResponds>> NetGetMyComment;
         public Action<GetUserByIdMsg, Action<HttpResponds>> NetGetUserById;
+        public Action<ChangeSchoolIdMsg, Action<HttpResponds>> NetChangeSchoolId;
+        public Action<ChangeSubjectIdMsg, Action<HttpResponds>> NetChangeSubjectId;
         #endregion
         #region Community
         public Action<GetHotInvitationMsg, Action<HttpResponds>> NetGetHotInvitation;
@@ -25,12 +27,27 @@ namespace liulaoc.Net
         public Action<GetPlateInvitationMsg, Action<HttpResponds>> NetGetPlateInvitation;
         public Action<AddScanMsg, Action<HttpResponds>> NetAddScan;
         public Action<AddCommentMsg, Action<HttpResponds>> NetAddComment;
+        public Action<JudgeLikeMsg, Action<HttpResponds>> NetJudgeLike;
+        public Action<GetLikeCountMsg, Action<HttpResponds>> NetGetLikeCount;
         #endregion
         #region Plan
         public Action<GetPlanMsg, Action<HttpResponds>> NetGetPlan;
-        public Action<GetAllSubjectMsg, Action<HttpResponds>> NetGetAllSbj;
+        public Action<GetAllMsg, Action<HttpResponds>> NetGetAllSbj;
         public Action<AddPlanMsg, Action<HttpResponds>> NetAddPlan;
         public Action<ChangePlanStatusMsg, Action<HttpResponds>> NetChangePlanStatus;
+        #endregion
+        #region Info
+        public Action<GetAllCarouselsMsg, Action<HttpResponds>> NetGetAllCarousels;
+        #endregion
+        #region 学校
+        public Action<GetAllMsg, Action<HttpResponds>> NetGetAllSchool;
+        public Action<GetSchoolMsg, Action<HttpResponds>> NetGetSchoolById;
+        #endregion
+        #region Invitation
+        public Action<GetInvitationBySchoolMsg, Action<HttpResponds>> NetGetInvitationBySchool;
+        #endregion
+        #region Subject
+        public Action<GetSubjectByIdMsg, Action<HttpResponds>> NetGetSubjectById;
         #endregion
     }
 

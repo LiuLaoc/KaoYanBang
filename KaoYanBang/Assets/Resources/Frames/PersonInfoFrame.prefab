@@ -187,7 +187,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b9b0656eea4984749a06670b575b356a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 73527fee3fd8f7c4a9b48ffe975042ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -685,6 +685,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7353663954754889530, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353663954754889530, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353663954754889530, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7353663954754889530, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4594490851385175513, guid: b536668f86f049d47aa5d451135e0afc,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -784,6 +804,76 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 148.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451388826419025862, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451388826419025862, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451388826419025862, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2451388826419025862, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9180868155071256015, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Name
+      value: Subject
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996988947138204486, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5996988947138204486, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996988947138204486, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996988947138204486, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832831242358705601, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1832831242358705601, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832831242358705601, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832831242358705601, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503439601381517226, guid: b536668f86f049d47aa5d451135e0afc,
+        type: 3}
+      propertyPath: m_Name
+      value: SchoolTxt
       objectReference: {fileID: 0}
     - target: {fileID: 4594490851385175514, guid: b536668f86f049d47aa5d451135e0afc,
         type: 3}

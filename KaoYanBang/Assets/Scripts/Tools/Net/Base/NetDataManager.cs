@@ -1,5 +1,6 @@
 ﻿using liulaoc.Net.Http;
 using POJO;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,10 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
     #region model
     public User user;
     public Dictionary<int, Invitation> myInvitation;
+    //点赞缓存
+    public Dictionary<int, bool> couldLike;
+    //浏览量缓存
+    public Dictionary<int, bool> couldScan;
     #endregion
     public void Init()
     {
@@ -61,6 +66,7 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
                 {
                     if (responds.Result == RespondsResult.Succ)
                     {
+                        HttpCenter.Instance.token = responds.token;
                         callback(responds);
                     }
                     else
@@ -106,6 +112,8 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             };
             HttpCenter.Instance.Send(httpRequest);
         };//通过用户名获取用户信息
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetChangeSchoolId, Method.Post, "User/changeschoolid");
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetChangeSubjectId, Method.Post, "User/changesubjectid");
         #endregion
         #region 个人界面
         MsgManager.Instance.NetMsgCenter.NetGetMyInvitation += (request, callbcak) =>
@@ -280,6 +288,8 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             };
             HttpCenter.Instance.Send(httpRequest);
         };
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetJudgeLike,Method.Post,"like/judgelike");
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetGetLikeCount,Method.Post,"like/countlike");
         #endregion
         #region 计划模块
         MsgManager.Instance.NetMsgCenter.NetGetPlan += (request, callbcak) =>
@@ -351,5 +361,54 @@ public class NetDataManager : TMonoSingleton<NetDataManager>,IInitializable
             HttpCenter.Instance.Send(httpRequest);
         };
         #endregion
+        #region Info
+        MsgManager.Instance.NetMsgCenter.NetGetAllCarousels += (request, callbcak) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + "carousel/getAllCarousels",
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callbcak(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
+        #endregion
+        #region School
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetGetAllSchool, Method.Post, "school/getallschool");
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetGetSchoolById, Method.Post, "school/getschool");
+        #endregion
+        #region invitation
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetGetInvitationBySchool,Method.Post,"invitation/getinvitationbyschool");
+        #endregion
+        #region subject
+        AddListener(ref MsgManager.Instance.NetMsgCenter.NetGetSubjectById,Method.Post,"subject/getsubjectbyid");
+        #endregion
+    }
+    private void AddListener<T>(ref Action<T,Action<HttpResponds>> registerEvent,Method methodType,string url) where T:BaseMsg
+    {
+        registerEvent += (request, callback) =>
+        {
+            HttpRequest httpRequest = new HttpRequest()
+            {
+                Msg = request,
+                HttpMethod = Method.Post,
+                Url = HttpCenter.path + url,
+                Handler = (responds) =>
+                {
+                    if (responds.Result == RespondsResult.Succ)
+                    {
+                        callback(responds);
+                    }
+                }
+            };
+            HttpCenter.Instance.Send(httpRequest);
+        };
     }
 }

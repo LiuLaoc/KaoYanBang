@@ -13,7 +13,7 @@ public class ReGradeFrame : UIFrame
     #endregion
     #region
     int count = 0;
-    int maxCount =0;
+    int maxCount =99;
     #endregion
     #region model
     List<string> title = new List<string>()
@@ -49,7 +49,7 @@ public class ReGradeFrame : UIFrame
                  });
              }
          });
-
+        StartCoroutine(InitAsync());
     }
     private void AddListener()
     {
@@ -59,6 +59,7 @@ public class ReGradeFrame : UIFrame
     {
         while(count < maxCount)
         {
+            Debug.Log(count + "/" + maxCount);
             yield return null;
         }
         tablePrefab.Init(title,scoreDatas);

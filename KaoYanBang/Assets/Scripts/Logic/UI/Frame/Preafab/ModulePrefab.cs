@@ -43,7 +43,14 @@ public class ModulePrefab : MonoBehaviour
 
     private void UpdateView()
     {
-        enterBtn.image.sprite = ResourceMgr.Instance.SubjectSprites[subject.subject_name];
+        if(ResourceMgr.Instance.SubjectSprites.ContainsKey(subject.subject_name))
+        {
+            enterBtn.image.sprite = ResourceMgr.Instance.SubjectSprites[subject.subject_name];
+        }
+        else
+        {
+            Debug.LogError("不存在" + subject.subject_name);
+        }
         sbjTxt.text = subject.subject_name;
     }
     private void OnEnable()

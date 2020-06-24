@@ -1,5 +1,6 @@
 ﻿using liulaoc.Net.Http;
 using liulaoc.UI.Base;
+using POJO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,9 +43,11 @@ public class NormalLoginPanel : UIPanel
             LoginMsg msg = new LoginMsg(accountField.text, pwdField.text);
             MsgManager.Instance.NetMsgCenter.NetLogin(msg, (responds) =>
              {
+                 HttpCenter.Instance.token = responds.token;
                  GetUserMsg userMsg = new GetUserMsg(accountField.text);
                  MsgManager.Instance.NetMsgCenter.NetGetUser(userMsg, (getUserResponds) =>
                   {
+                      NetDataManager.Instance.user = JsonHelper.DeserializeObject<User>(getUserResponds.data);
                       UIMgr.Instance.CreateFrame("PersonalFrame");
                   });
              });

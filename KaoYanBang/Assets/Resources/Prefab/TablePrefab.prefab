@@ -113,8 +113,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3396797628272495734}
   m_HandleRect: {fileID: 3396797628272495735}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 1
+  m_Value: 0
+  m_Size: 0.99972016
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -566,7 +566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -532, y: 538.0999}
+  m_AnchoredPosition: {x: -532, y: 538.1}
   m_SizeDelta: {x: 1064, y: 1076.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3396797628510493414
@@ -757,6 +757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3396797629149502999}
+  - component: {fileID: 6576347374892174983}
   m_Layer: 5
   m_Name: TablePrefab
   m_TagString: Untagged
@@ -786,6 +787,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 222.9}
   m_SizeDelta: {x: 1080, y: 1226.3}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6576347374892174983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396797629149502992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778a958572004754c853ddd1a39388cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordPrefab: {fileID: 0}
+  group: {fileID: 0}
+  titlePrefab: {fileID: 0}
 --- !u!1 &3396797629154869956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,3 +1139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb412e61fc114b40a6482f839e2f1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allTexts: []
